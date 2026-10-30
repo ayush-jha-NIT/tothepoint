@@ -1,5 +1,6 @@
-import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 "use client";
+
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";

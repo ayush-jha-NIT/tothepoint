@@ -54,3 +54,8 @@ test("there is no false automatic booking confirmation page", () => {
   const anchor = read("src/components/ui/action-link.tsx");
   assert.match(anchor, /noopener noreferrer/);
 });
+
+test("interactive mobile menu retains its Client Component boundary", () => {
+  const header = read("src/components/layout/site-header.tsx");
+  assert.ok(header.trimStart().startsWith('"use client";'));
+});
