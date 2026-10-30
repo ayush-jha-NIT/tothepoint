@@ -1,22 +1,53 @@
 @import "tailwindcss";
 
+/* Brand tokens shared by every route. The visual system follows the approved mockups. */
 :root {
-  --navy: #061427;
+  color-scheme: dark;
   --navy-deep: #020d1b;
+  --navy: #061427;
+  --navy-soft: #0c2037;
+  --navy-elevated: #11283e;
   --gold: #e8b664;
   --gold-light: #f8d99d;
+  --gold-dim: #bd9255;
   --cream: #f8f0e4;
+  --muted: #b5bdc9;
+  --line: rgba(232, 182, 100, 0.22);
 }
 
 @theme inline {
-  --color-navy: var(--navy);
   --color-navy-deep: var(--navy-deep);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-navy-elevated: var(--navy-elevated);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
+  --color-gold-dim: var(--gold-dim);
   --color-cream: var(--cream);
+  --color-muted: var(--muted);
   --font-display: Georgia, "Times New Roman", serif;
 }
 
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--navy-deep); color: var(--cream); }
+body { margin: 0; background: var(--navy-deep); color: var(--cream); font-family: Arial, Helvetica, sans-serif; }
+* { box-sizing: border-box; }
 ::selection { background: var(--gold); color: var(--navy); }
+:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+a { text-underline-offset: 4px; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+.skip-link { position: fixed; left: 1rem; top: -8rem; z-index: 100; padding: .75rem 1rem; background: var(--gold); color: var(--navy); border-radius: .5rem; }
+.skip-link:focus { top: .75rem; }
+
+.surface-panel {
+  background: linear-gradient(140deg, rgba(19,42,61,.94), rgba(6,20,39,.93));
+  border: 1px solid var(--line);
+  box-shadow: 0 15px 50px rgba(0,0,0,.14), inset 0 1px rgba(255,255,255,.025);
+}
+.gold-gradient-text { background: linear-gradient(110deg,#f9e1b3 10%,#e8b664 60%,#b7884b); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.celestial-glow { background: radial-gradient(ellipse at 80% 22%,rgba(186,137,65,.13),transparent 38%), radial-gradient(ellipse at 12% 75%,rgba(26,70,109,.22),transparent 38%); }
+.star-field { background-image: radial-gradient(1px 1px at 8% 15%,#f9dfa9 96%,transparent), radial-gradient(1px 1px at 24% 74%,#e3c18c 96%,transparent), radial-gradient(1.5px 1.5px at 73% 15%,#f3d3a3 96%,transparent), radial-gradient(1px 1px at 87% 58%,#d9ba86 96%,transparent), radial-gradient(1.5px 1.5px at 48% 38%,#d9ba86 96%,transparent), radial-gradient(1px 1px at 62% 92%,#f9dfa9 96%,transparent); background-size: 620px 520px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
