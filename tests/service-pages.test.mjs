@@ -55,7 +55,7 @@ test("service-specific FAQs and copy do not advertise unverified prices or guara
   const page = source("src/app/services/[slug]/page.tsx");
   assert.doesNotMatch(config + page, /₹\s*[0-9]|\b1000\+\b|4\.9\/5|10\+ Years/);
   assert.match(page, /not a confirmed booking/);
-  assert.match(page, /not a replacement for professional medical, legal or financial advice/);
+  assert.match(page, /not a (?:replacement|substitute) for professional medical, legal or financial advice/);
   for (const profile of Object.values(serviceProfiles)) {
     assert.ok(profile.questions.some(({ answer }) => /no\.|not|cannot/i.test(answer)));
   }
