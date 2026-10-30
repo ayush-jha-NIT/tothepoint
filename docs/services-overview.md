@@ -1,6 +1,6 @@
 # Part 4: Services Overview Page
 
-Dedicated route: `/services`. It replaces the generic placeholder without affecting the future-service placeholders at `/services/[slug]` (Part 5).
+Dedicated route: `/services`. This page replaced the generic placeholder. Individual routes at `/services/[slug]` were completed in Part 5.
 
 ## Sections
 1. Breadcrumb hero with celestial art, service introduction, two functioning CTAs.
@@ -17,7 +17,7 @@ Dedicated route: `/services`. It replaces the generic placeholder without affect
 - No guessed prices, ratings, photos, credentials, experience counts, reviews, specific appointment dates or availability.
 - Clicking Book Consultation opens WhatsApp. It **does not** make or confirm an appointment.
 - Service details and booking are confirmed manually.
-- All detail pages remain temporary noindex placeholders until Part 5.
+- All six service routes now have dedicated content, metadata and service-specific WhatsApp links from Part 5.
 - Contact and testimonials pages remain temporary until Parts 10 and 7.
 
 ## Testing

@@ -20,7 +20,7 @@ The global Part 1 site header and footer remain unchanged.
 - Testimonials are deliberately not fabricated. The placeholder is replaced in Part 7 upon receiving real, approved testimonials.
 
 ## Service detail destinations
-Part 2 introduces six temporary `/services/[slug]` pages so every homepage service card works. The pages are `noindex` and will be replaced in Part 5.
+Part 2 originally introduced six temporary `/services/[slug]` routes. Part 5 replaced them with dedicated service detail pages and removed their placeholder `noindex` setting.
 
 ## Booking
 Every Book Consultation CTA uses `getConsultationWhatsAppUrl()`. Service cards pass their selected service title so the prefilled WhatsApp message identifies the enquiry.

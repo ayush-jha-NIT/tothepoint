@@ -35,9 +35,11 @@ test("homepage uses the shared design system and direct booking integration", ()
   assert.ok(!page.includes("1000+"));
 });
 
-test("service preview routes are available without premature indexing", () => {
+test("all six completed service routes are statically generated with metadata", () => {
   const page = source("src/app/services/[slug]/page.tsx");
   assert.match(page, /generateStaticParams/);
-  assert.match(page, /index: false/);
+  assert.match(page, /serviceProfiles/);
+  assert.match(page, /generateMetadata/);
+  assert.doesNotMatch(page, /index: false, follow: false/);
   assert.match(page, /getConsultationWhatsAppUrl\(service.title\)/);
 });
