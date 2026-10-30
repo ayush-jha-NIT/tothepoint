@@ -1,3 +1,4 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AboutCta } from "@/components/about/about-cta";
@@ -7,7 +8,6 @@ import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
 import { aboutReasons, aboutValues, areasOfInterest, consultationSteps } from "@/config/about";
 import { siteConfig } from "@/config/site";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "About Hariom Shrivastava",
@@ -50,7 +50,7 @@ function AboutHero() {
             understand the service and arrange the details directly.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ActionLink href={getConsultationWhatsAppUrl()} icon="arrow-right">Book a Consultation</ActionLink>
+            <WhatsAppBookingLink icon="arrow-right">Book a Consultation</WhatsAppBookingLink>
             <ActionLink href="/services" variant="outline" icon="arrow-right">Explore Services</ActionLink>
           </div>
         </div>

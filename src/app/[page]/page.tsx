@@ -1,10 +1,10 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ActionLink } from "@/components/ui/action-link";
 import { CelestialArt } from "@/components/ui/celestial-art";
 import { Container } from "@/components/ui/container";
 import { placeholderPages } from "@/config/navigation";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 
 type Props = { params: Promise<{ page: string }> };
 
@@ -33,7 +33,7 @@ export default async function PlaceholderPage({ params }: Props) {
           <p className="mt-6 text-base leading-8 text-muted">{found.message}</p>
           <p className="mt-4 text-sm text-cream/60">This page is under construction. The final design and verified content will be added during its planned development phase.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <ActionLink href={getConsultationWhatsAppUrl()} icon="message">Book Consultation</ActionLink>
+            <WhatsAppBookingLink icon="message">Book Consultation</WhatsAppBookingLink>
             <ActionLink href="/" variant="outline" icon="arrow-right">Return Home</ActionLink>
           </div>
         </div>

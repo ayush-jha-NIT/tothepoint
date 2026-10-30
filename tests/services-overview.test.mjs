@@ -36,7 +36,7 @@ test("overview contains 4 booking steps, 4 service benefits and 6 FAQs", () => {
 
 test("dedicated /services route is implemented, with correct links", () => {
   const page = source("src/app/services/page.tsx");
-  for(const value of ["export const metadata", "ServicesHero", "ServiceCards", "ServiceArtwork", "HowItWorks", "ServicesFaq", "getConsultationWhatsAppUrl(service.title)", "/services/", "servicePreviews"]) {
+  for(const value of ["export const metadata", "ServicesHero", "ServiceCards", "ServiceArtwork", "HowItWorks", "ServicesFaq", "service={service.title}", "/services/", "servicePreviews"]) {
     assert.ok(page.includes(value), "missing " + value);
   }
   assert.doesNotMatch(page, /\b1000\+|4\.9\/5|100% Confidential|₹[0-9]/);

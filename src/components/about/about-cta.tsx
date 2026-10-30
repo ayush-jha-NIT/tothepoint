@@ -1,7 +1,7 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 
 export function AboutCta() {
   return (
@@ -18,7 +18,7 @@ export function AboutCta() {
           </p>
         </div>
         <div className="flex w-full flex-wrap items-center gap-3 lg:w-auto">
-          <ActionLink href={getConsultationWhatsAppUrl()} icon="arrow-right">Book Consultation</ActionLink>
+          <WhatsAppBookingLink icon="arrow-right">Book Consultation</WhatsAppBookingLink>
           <ActionLink href="/services" variant="outline" icon="arrow-right">Explore Services</ActionLink>
         </div>
         <Icon name="sparkles" size={24} className="absolute right-8 top-0 hidden text-gold/35 lg:block" />

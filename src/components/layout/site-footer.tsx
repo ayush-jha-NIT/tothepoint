@@ -1,8 +1,8 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import Link from "next/link";
 import { policyNavigation, primaryNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
-import { ActionLink } from "@/components/ui/action-link";
 import { BrandMark } from "@/components/ui/brand-mark";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
@@ -18,7 +18,7 @@ export function SiteFooter() {
               Traditional astrology perspectives, presented with clarity and care.
               Connect with {siteConfig.astrologer} to discuss a consultation.
             </p>
-            <ActionLink href={getConsultationWhatsAppUrl()} variant="outline" size="small" icon="message" className="mt-6">Chat on WhatsApp</ActionLink>
+            <WhatsAppBookingLink variant="outline" size="small" icon="message" className="mt-6">Chat on WhatsApp</WhatsAppBookingLink>
           </div>
 
           <div>
@@ -43,7 +43,7 @@ export function SiteFooter() {
             <h2 className="eyebrow mb-5">Get in touch</h2>
             <div className="flex flex-col gap-4">
               <a href={getConsultationWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm text-cream/75 transition-colors hover:text-gold">
-                <Icon name="message" size={19} className="mt-0.5 shrink-0 text-gold" /><span>+91 7007962637<span className="mt-1 block text-xs text-muted">Consultations via WhatsApp</span></span>
+                <Icon name="message" size={19} className="mt-0.5 shrink-0 text-gold" /><span>+91 {siteConfig.whatsappNumber.slice(2)}<span className="mt-1 block text-xs text-muted">Consultations via WhatsApp</span></span>
               </a>
               <a href={`mailto:${siteConfig.contactEmail}`} className="flex items-start gap-3 break-all text-sm text-cream/75 transition-colors hover:text-gold">
                 <Icon name="mail" size={19} className="mt-0.5 shrink-0 text-gold" />{siteConfig.contactEmail}

@@ -28,7 +28,7 @@ test("FAQ includes direct booking guidance and appropriate limitations", () => {
 
 test("homepage uses the shared design system and direct booking integration", () => {
   const page = source("src/app/page.tsx");
-  for (const tag of ["Container", "ActionLink", "CelestialArt", "HomeFaq", "servicePreviews", "getConsultationWhatsAppUrl"]) {
+  for (const tag of ["Container", "ActionLink", "CelestialArt", "HomeFaq", "servicePreviews", "WhatsAppBookingLink"]) {
     assert.ok(page.includes(tag), tag);
   }
   assert.ok(!page.includes("Priya Sharma"));
@@ -41,5 +41,5 @@ test("all six completed service routes are statically generated with metadata", 
   assert.match(page, /serviceProfiles/);
   assert.match(page, /generateMetadata/);
   assert.doesNotMatch(page, /index: false, follow: false/);
-  assert.match(page, /getConsultationWhatsAppUrl\(service.title\)/);
+  assert.match(page, /<WhatsAppBookingLink service=\{service.title\}/);
 });

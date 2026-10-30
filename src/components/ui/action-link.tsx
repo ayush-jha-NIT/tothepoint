@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Icon } from "./icons";
 
-type ActionLinkProps = {
+export type ActionLinkProps = {
   href: string;
   children: ReactNode;
   variant?: "primary" | "outline" | "ghost";

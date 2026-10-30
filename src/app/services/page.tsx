@@ -1,3 +1,4 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ServiceArtwork } from "@/components/services/service-artwork";
@@ -12,7 +13,6 @@ import {
   serviceDetails,
   serviceQuestions,
 } from "@/config/services-overview";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Astrology Consultation Services",
@@ -51,7 +51,7 @@ function ServicesHero() {
             Discuss your questions with Tothepoint Astrology and arrange the details directly.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <ActionLink href={getConsultationWhatsAppUrl()} icon="message">Book Consultation</ActionLink>
+            <WhatsAppBookingLink icon="message">Book Consultation</WhatsAppBookingLink>
             <ActionLink href="#service-list" variant="outline" icon="arrow-right">Explore Services</ActionLink>
           </div>
         </div>
@@ -124,9 +124,9 @@ function ServiceCards() {
                     <ActionLink href={`/services/${service.slug}`} variant="outline" size="small" icon="arrow-right" className="w-full">
                       Know More
                     </ActionLink>
-                    <ActionLink href={getConsultationWhatsAppUrl(service.title)} size="small" icon="message" className="w-full">
+                    <WhatsAppBookingLink service={service.title} size="small" icon="message" className="w-full">
                       Book Consultation
-                    </ActionLink>
+                    </WhatsAppBookingLink>
                   </div>
                 </div>
               </article>
@@ -261,7 +261,7 @@ function FinalCta() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <ActionLink href={getConsultationWhatsAppUrl()} icon="message">Book Consultation</ActionLink>
+          <WhatsAppBookingLink icon="message">Book Consultation</WhatsAppBookingLink>
           <ActionLink href="/contact" variant="outline" icon="arrow-right">Contact Us</ActionLink>
         </div>
       </Container>

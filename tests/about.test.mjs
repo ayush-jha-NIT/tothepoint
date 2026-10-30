@@ -20,7 +20,7 @@ test("about service links map exactly to the six available services", () => {
 
 test("dedicated /about route exists with metadata, navigation, and WhatsApp CTAs", () => {
   const page = read("src/app/about/page.tsx");
-  for (const s of ["export const metadata", "About Hariom Shrivastava", "href=\"/\"", "getConsultationWhatsAppUrl", "AboutCta", "consultationSteps", "areasOfInterest", "AstrologerVisual"]) {
+  for (const s of ["export const metadata", "About Hariom Shrivastava", "href=\"/\"", "WhatsAppBookingLink", "AboutCta", "consultationSteps", "areasOfInterest", "AstrologerVisual"]) {
     assert.ok(page.includes(s), "Missing About page requirement: " + s);
   }
   assert.ok(!page.includes("1000+"));
@@ -32,7 +32,7 @@ test("About is no longer served as a generic placeholder", () => {
   const navigation = read("src/config/navigation.ts");
   assert.doesNotMatch(navigation, /\n\s*about: \{ title:/);
   const about = read("src/app/about/page.tsx");
-  assert.match(about, /getConsultationWhatsAppUrl\(\)/);
+  assert.match(about, /WhatsAppBookingLink/);
 });
 
 test("biographical content does not invent formal qualifications or experience numbers", () => {

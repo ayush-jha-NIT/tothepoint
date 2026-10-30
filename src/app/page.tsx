@@ -1,3 +1,4 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HomeFaq } from "@/components/home/faq-list";
@@ -8,7 +9,6 @@ import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
 import { servicePreviews } from "@/config/home";
 import { siteConfig } from "@/config/site";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Personal Astrology Consultations | Tothepoint Astrology",
@@ -47,12 +47,12 @@ function Hero() {
             Connect directly with {siteConfig.astrologer} to discuss your next steps.
           </p>
           <div className="mt-9 flex flex-wrap gap-3.5">
-            <ActionLink href={getConsultationWhatsAppUrl()} icon="arrow-right">
+            <WhatsAppBookingLink icon="arrow-right">
               Book Consultation
-            </ActionLink>
-            <ActionLink href={getConsultationWhatsAppUrl()} variant="outline" icon="message">
+            </WhatsAppBookingLink>
+            <WhatsAppBookingLink variant="outline" icon="message">
               Chat on WhatsApp
-            </ActionLink>
+            </WhatsAppBookingLink>
           </div>
           <div className="mt-11 grid max-w-[580px] grid-cols-1 gap-4 border-t border-gold/15 pt-6 sm:grid-cols-3 sm:gap-3">
             {[
@@ -120,12 +120,7 @@ function Services() {
                 </Link>
               </div>
               <div className="relative z-10 mt-2">
-                <Link
-                  href={getConsultationWhatsAppUrl(service.title)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-10 items-center justify-center text-[11px] font-medium text-cream/75 underline-offset-4 hover:text-gold-light hover:underline"
-                >Book on WhatsApp</Link>
+                <WhatsAppBookingLink service={service.title} variant="ghost" icon={undefined} size="small" className="inline-flex min-h-10 items-center justify-center text-[11px] font-medium text-cream/75 underline-offset-4 hover:text-gold-light hover:underline">Book on WhatsApp</WhatsAppBookingLink>
               </div>
             </article>
           ))}
@@ -268,8 +263,8 @@ function ClosingCallToAction() {
           Reach out with your questions, and arrange the details directly on WhatsApp.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <ActionLink href={getConsultationWhatsAppUrl()} icon="arrow-right">Book Your Consultation</ActionLink>
-          <ActionLink href={getConsultationWhatsAppUrl()} variant="outline" icon="message">Contact on WhatsApp</ActionLink>
+          <WhatsAppBookingLink icon="arrow-right">Book Your Consultation</WhatsAppBookingLink>
+          <WhatsAppBookingLink variant="outline" icon="message">Contact on WhatsApp</WhatsAppBookingLink>
         </div>
       </Container>
     </section>

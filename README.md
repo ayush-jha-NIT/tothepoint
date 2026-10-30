@@ -1,6 +1,6 @@
 # Tothepoint Astrology
 
-**Part 0: Project foundation** for the website of Hariom Shrivastava. The premium navy, gold and cream website designs will be implemented in subsequent parts.
+Website of Hariom Shrivastava, implemented in phased releases. Parts 0–6 cover the Next.js foundation, shared design system, homepage, About page, Services overview, six service detail pages and standardized WhatsApp booking.
 
 ## Stack
 - Next.js 16 (App Router)
@@ -22,10 +22,10 @@ npm test
 npm run build
 ```
 
-The GitHub Actions workflow uses `npm ci` when a lockfile is present, or `npm install` for the first online install. **Before publishing**, run `npm install` and commit the generated `package-lock.json` for reproducible builds. The starter was assembled without npm registry access, so dependency installation and a production build have not yet been verified.
+The GitHub Actions workflow uses `npm ci` when a lockfile is present, or `npm install` for the first online install. **Before publishing**, run `npm install` and commit the generated `package-lock.json` for reproducible builds. Builds and tests are verified through GitHub Actions after each development part.
 
 ## Current scope
-- Confirmed booking WhatsApp: **+91 7007962637**. All booking CTAs open WhatsApp.
+- Confirmed booking WhatsApp: **+91 7007962637**. All booking CTAs open WhatsApp with a prefilled enquiry. The legacy `/booking` and `/book-consultation` routes redirect there. See `docs/whatsapp-booking.md`.
 - Confirmed form recipient: **tothepointastrology@gmail.com**. Form delivery will be implemented in Part 10.
 - No payment gateway, booking database or automatic booking confirmation.
 

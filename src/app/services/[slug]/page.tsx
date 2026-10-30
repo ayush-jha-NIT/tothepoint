@@ -1,3 +1,4 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,7 +9,6 @@ import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
 import { servicePreviews } from "@/config/home";
 import { serviceProfiles } from "@/config/service-profiles";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -42,7 +42,6 @@ export default async function ServicePage({ params }: Props) {
   const service = servicePreviews.find((item) => item.slug === slug);
   if (!service) notFound();
   const profile = serviceProfiles[service.slug];
-  const bookUrl = getConsultationWhatsAppUrl(service.title);
   const relatedServices = servicePreviews.filter((item) => item.slug !== service.slug).slice(0,3);
 
   return (
@@ -68,8 +67,8 @@ export default async function ServicePage({ params }: Props) {
             <p className="mt-5 font-display text-xl leading-snug text-gold-light sm:text-2xl">{profile.heroLine}</p>
             <p className="mt-5 max-w-xl text-sm leading-8 text-cream/75 sm:text-base">{profile.introduction}</p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <ActionLink href={bookUrl} icon="message">Book Consultation</ActionLink>
-              <ActionLink href={bookUrl} variant="outline" icon="arrow-right">Chat on WhatsApp</ActionLink>
+              <WhatsAppBookingLink service={service.title} icon="message">Book Consultation</WhatsAppBookingLink>
+              <WhatsAppBookingLink service={service.title} variant="outline" icon="arrow-right">Chat on WhatsApp</WhatsAppBookingLink>
             </div>
             <p className="mt-6 max-w-lg text-xs leading-6 text-cream/65">
               Messaging us starts an enquiry, not a confirmed booking. Availability, consultation format and fees are agreed directly.
@@ -244,7 +243,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
             <p className="mt-4 text-sm leading-7 text-[#4d514d]">Ask about {service.title}, suitable options and current fees directly on WhatsApp.</p>
             <div className="mt-7">
-              <ActionLink href={bookUrl} icon="message" className="w-full">Enquire on WhatsApp</ActionLink>
+              <WhatsAppBookingLink service={service.title} icon="message" className="w-full">Enquire on WhatsApp</WhatsAppBookingLink>
             </div>
           </div>
         </Container>
@@ -308,7 +307,7 @@ export default async function ServicePage({ params }: Props) {
             <p className="mt-4 text-sm leading-7 text-muted">Message Tothepoint Astrology on WhatsApp and ask about your consultation.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <ActionLink href={bookUrl} icon="message">Book Consultation</ActionLink>
+            <WhatsAppBookingLink service={service.title} icon="message">Book Consultation</WhatsAppBookingLink>
             <ActionLink href="/services" variant="outline" icon="arrow-right">All Services</ActionLink>
           </div>
         </Container>

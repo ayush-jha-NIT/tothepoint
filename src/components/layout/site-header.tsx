@@ -1,11 +1,10 @@
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { primaryNavigation } from "@/config/navigation";
-import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
-import { ActionLink } from "@/components/ui/action-link";
 import { BrandMark } from "@/components/ui/brand-mark";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
@@ -39,7 +38,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:block">
-          <ActionLink href={getConsultationWhatsAppUrl()} size="small" icon="arrow-up-right">Book Consultation</ActionLink>
+          <WhatsAppBookingLink size="small" icon="arrow-up-right">Book Consultation</WhatsAppBookingLink>
         </div>
 
         <button
@@ -78,7 +77,7 @@ export function SiteHeader() {
             );
           })}
           <li className="mt-3">
-            <ActionLink href={getConsultationWhatsAppUrl()} icon="message" className="w-full">Book Consultation</ActionLink>
+            <WhatsAppBookingLink icon="message" className="w-full">Book Consultation</WhatsAppBookingLink>
           </li>
         </ul>
       </nav>
