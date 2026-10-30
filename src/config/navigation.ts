@@ -15,7 +15,6 @@ export const policyNavigation = [
 
 /** These pages are placeholders until their corresponding roadmap phases. */
 export const placeholderPages: Record<string, { title: string; message: string; phase: string }> = {
-  services: { title: "Our Services", message: "Explore our astrology consultation services.", phase: "Part 4" },
   testimonials: { title: "Testimonials", message: "Client experiences will appear here after verification and approval.", phase: "Part 7" },
   blog: { title: "Astrology Insights", message: "Articles and educational resources will appear here.", phase: "Part 8" },
   contact: { title: "Contact Us", message: "Reach out directly for consultation inquiries.", phase: "Part 10" },
