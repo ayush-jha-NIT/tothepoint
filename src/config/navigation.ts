@@ -15,7 +15,6 @@ export const policyNavigation = [
 
 /** These pages are placeholders until their corresponding roadmap phases. */
 export const placeholderPages: Record<string, { title: string; message: string; phase: string }> = {
-  testimonials: { title: "Testimonials", message: "Client experiences will appear here after verification and approval.", phase: "Part 7" },
   blog: { title: "Astrology Insights", message: "Articles and educational resources will appear here.", phase: "Part 8" },
   contact: { title: "Contact Us", message: "Reach out directly for consultation inquiries.", phase: "Part 10" },
   "privacy-policy": { title: "Privacy Policy", message: "An approved privacy policy will appear here before launch.", phase: "Part 11" },
