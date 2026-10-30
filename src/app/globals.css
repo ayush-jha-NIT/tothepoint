@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #061427;
+  --navy-deep: #020d1b;
+  --gold: #e8b664;
+  --gold-light: #f8d99d;
+  --cream: #f8f0e4;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --font-display: Georgia, "Times New Roman", serif;
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--navy-deep); color: var(--cream); }
+::selection { background: var(--gold); color: var(--navy); }
