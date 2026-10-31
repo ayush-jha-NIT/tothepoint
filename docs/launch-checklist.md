@@ -10,8 +10,13 @@
 - [ ] Verify that contact form mail reaches tothepointastrology@gmail.com (Part 10 endpoint coded; provider credentials still needed).
 - [ ] Verify WhatsApp links from every future page, including service pages.
 - [x] Replace Part 0 placeholder homepage with designed Part 2 page.
-- [ ] Confirm Part 13 browser-based responsive, accessibility and performance smoke checks pass in CI; manual production checks remain for Part 14.
-- [ ] Connect custom domain to Vercel and run production smoke tests.
+- [x] Part 13 Chromium responsive/accessibility, unit, lint and build checks passed in CI (run 41177630682).
+- [x] Connect the GitHub repository to Vercel and create a READY production deployment.
+- [x] Restrict Vercel Authentication to Preview deployments only; production URLs are intended to be public.
+- [ ] Connect a client-approved custom domain and run the externally hosted production smoke tests.
 
 - [ ] Configure verified canonical HTTPS domain and check sitemap.xml / robots.txt / canonical tags.
 - [ ] Run production Lighthouse, real-device and screen-reader checks before full launch.
+
+- [ ] Verify real production routes from a browser/network with access to the Vercel domain; automated remote fetch was unavailable during setup.
+- [ ] Confirm custom domain and resolve legal policy approval before enabling production indexing.

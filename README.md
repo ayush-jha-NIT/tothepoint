@@ -1,6 +1,6 @@
 # Tothepoint Astrology
 
-Website of Hariom Shrivastava, implemented in phased releases. Parts 0–13 cover the Next.js foundation, shared design system, homepage, About page, Services overview, six service detail pages, standardized WhatsApp booking, Testimonials, the blog listing and MDX article pages, the contact email endpoint, legal policy drafts, SEO and browser-based quality checks.
+Website of Hariom Shrivastava, implemented in phased releases. Parts 0–14 cover the Next.js foundation, shared design system, homepage, About page, Services overview, six service detail pages, standardized WhatsApp booking, Testimonials, the blog listing and MDX article pages, the contact email endpoint, legal policy drafts, SEO and browser-based quality checks.
 
 ## Stack
 - Next.js 16 (App Router)
@@ -34,6 +34,7 @@ The GitHub Actions workflow uses `npm ci` when a lockfile is present, or `npm in
 - Part 11: Privacy, Terms and Refund pages contain clearly marked **drafts**, with `noindex` until client/legal approval. See `docs/legal-policies.md`.
 - Part 12: Canonical URL policy, sitemap/robots, OG image and structured data. `NEXT_PUBLIC_SITE_URL` must point to a verified public HTTPS domain before indexing. See `docs/seo.md`.
 - Part 13: Automated responsive, Chromium browser, axe accessibility and basic performance checks, in addition to CI lint/typecheck/unit/build. See `docs/quality.md`.
+- Part 14: Vercel project `tothepoint` created, linked to `ayush-jha-NIT/tothepoint` on `main`, and production deployed. Node.js pinned to 22.x; production Vercel alias `https://tothepoint-green.vercel.app`. Public launch approval and verified Resend delivery remain outstanding. Run `BASE_URL=https://your-domain npm run smoke:production` once the domain is accessible. See `docs/deployment.md`.
 - No payment gateway, booking database or automatic booking confirmation.
 
 ## Folder map
