@@ -28,7 +28,7 @@ test("FAQ includes direct booking guidance and appropriate limitations", () => {
 
 test("homepage uses the shared design system and direct booking integration", () => {
   const page = source("src/app/page.tsx");
-  for (const tag of ["Container", "ActionLink", "CelestialArt", "AstrologerVisual", "servicePreviews", "WhatsAppBookingLink"]) {
+  for (const tag of ["Container", "ActionLink", "Image", "AstrologerVisual", "servicePreviews", "WhatsAppBookingLink"]) {
     assert.ok(page.includes(tag), tag);
   }
   assert.ok(!page.includes("Priya Sharma"));
@@ -57,7 +57,7 @@ test("reference-inspired homepage has the seven requested sections in the correc
     previous = index;
   }
   const styles = source("src/app/homepage.css");
-  for (const name of ["home-paper", "home-hero-cloud", "home-step-connector", "home-final-sky"]) {
+  for (const name of ["home-paper", "home-hero-image", "home-step-connector", "home-final-sky"]) {
     assert.ok(styles.includes(name));
   }
 });
@@ -70,4 +70,15 @@ test("homepage keeps all service routes discoverable without unverifiable busine
   for (const absent of ["1000+", "10+ Years", "100% genuine", "Indore", "1999", "guaranteed success"]) {
     assert.ok(!page.includes(absent), "Unverified claim: " + absent);
   }
+});
+
+test("homepage hero uses the exact generated image asset with responsive rendering", () => {
+  const page = source("src/app/page.tsx");
+  const css = source("src/app/homepage.css");
+  assert.ok(page.includes('src="/images/hero-astrologer.png"'));
+  assert.match(page, /priority/);
+  assert.match(page, /sizes="100vw"/);
+  assert.doesNotMatch(page, /home-hero-monogram|home-hero-figure/);
+  assert.match(css, /home-hero-image/);
+  assert.match(css, /object-position: 74% 44%/);
 });

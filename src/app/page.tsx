@@ -1,9 +1,9 @@
 import { canonicalPath } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import { AstrologerVisual } from "@/components/about/astrologer-visual";
-import { CelestialArt } from "@/components/ui/celestial-art";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Icon, type IconName } from "@/components/ui/icons";
@@ -42,10 +42,20 @@ const reasons = [
 function HomeHero() {
   return (
     <section className="home-hero relative isolate overflow-hidden border-b border-gold/25 bg-[#041020]" aria-labelledby="home-title">
-      <div aria-hidden="true" className="star-field absolute inset-0 opacity-35" />
-      <div aria-hidden="true" className="home-hero-cloud pointer-events-none absolute inset-0" />
-      <Container className="relative grid items-end gap-5 pb-0 pt-7 md:grid-cols-[1.02fr_.98fr] md:gap-0 md:pt-7 lg:min-h-[560px]">
-        <div className="relative z-10 max-w-[670px] pb-10 sm:pb-14 md:pb-[88px]">
+      <div className="home-hero-photo">
+        <Image
+          src="/images/hero-astrologer.png"
+          alt="Illustrated astrologer seated beneath a glowing golden zodiac wheel, with traditional books and a star-filled night sky"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="home-hero-image"
+        />
+      </div>
+      <div aria-hidden="true" className="home-hero-shade" />
+      <Container className="home-hero-content relative z-10 flex items-center">
+        <div className="home-hero-copy max-w-[600px] py-10 sm:py-14 lg:py-20">
           <nav aria-label="Breadcrumb" className="mb-8 sm:mb-12">
             <ol className="flex items-center gap-2 text-xs text-gold-light/90 sm:text-sm">
               <li><Link href="/" aria-current="page" className="hover:text-cream">Home</Link></li>
@@ -61,7 +71,7 @@ function HomeHero() {
           <h2 className="mt-5 font-display text-lg leading-snug text-cream sm:text-2xl">
             Astrology with Purpose. Guidance for a Better Tomorrow.
           </h2>
-          <p className="mt-4 max-w-[590px] text-sm leading-[1.8] text-cream/75 sm:text-base">
+          <p className="mt-4 max-w-[560px] text-sm leading-[1.8] text-cream/85 sm:text-base">
             At {siteConfig.name}, explore traditional Vedic astrology through a clear,
             personal conversation. Discuss relationships, career, life decisions and
             the questions that matter most to you.
@@ -70,18 +80,6 @@ function HomeHero() {
             <WhatsAppBookingLink icon="message">Book a Consultation</WhatsAppBookingLink>
             <ActionLink href="/services" variant="outline">Explore Services</ActionLink>
           </div>
-        </div>
-        <div className="home-hero-art relative z-0 mx-auto w-full max-w-[620px] self-end" role="img" aria-label="Decorative gold zodiac illustration with the initials HS; no verified portrait has been provided">
-          <div aria-hidden="true" className="absolute inset-[5%_2%_8%] rounded-full bg-[radial-gradient(circle,rgba(215,146,55,.2),transparent_65%)] blur-xl" />
-          <div aria-hidden="true" className="absolute bottom-[-20%] right-[-5%] w-[106%] opacity-80">
-            <CelestialArt className="max-w-none" />
-          </div>
-          <div aria-hidden="true" className="home-hero-figure">
-            <div className="home-hero-halo" />
-            <span className="home-hero-monogram">HS</span>
-            <div className="home-hero-figure-name">Tothepoint Astrology</div>
-          </div>
-          <div aria-hidden="true" className="home-hero-stars">✦ <span>✧</span> ✦</div>
         </div>
       </Container>
     </section>
