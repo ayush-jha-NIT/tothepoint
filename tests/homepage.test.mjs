@@ -80,7 +80,7 @@ test("homepage hero uses the exact generated image asset with responsive renderi
   assert.match(page, /sizes="100vw"/);
   assert.doesNotMatch(page, /home-hero-monogram|home-hero-figure/);
   assert.match(css, /home-hero-image/);
-  assert.match(css, /object-position: 74% 44%/);
+  assert.match(css, /object-position: 74% 45%/);
 });
 
 test("hero uses available desktop viewport height and mobile-safe sizing", () => {
