@@ -23,9 +23,8 @@ test("every built page uses the shared WhatsApp booking CTA", () => {
   }
 });
 
-test("service-specific CTAs preserve the selected service", () => {
+test("service pages preserve the selected service in WhatsApp links", () => {
   const pages = [
-    read("src/app/page.tsx"),
     read("src/app/services/page.tsx"),
     read("src/app/services/[slug]/page.tsx"),
   ];
@@ -58,4 +57,11 @@ test("there is no false automatic booking confirmation page", () => {
 test("interactive mobile menu retains its Client Component boundary", () => {
   const header = read("src/components/layout/site-header.tsx");
   assert.ok(header.trimStart().startsWith('"use client";'));
+});
+
+test("redesigned homepage directs enquiries to WhatsApp and links each service", () => {
+  const page = read("src/app/page.tsx");
+  assert.match(page, /<WhatsAppBookingLink/);
+  assert.match(page, /servicePreviews\.map/);
+  assert.match(page, /href=\{"\/services\/"\+service.slug\}/);
 });

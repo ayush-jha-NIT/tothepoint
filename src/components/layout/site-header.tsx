@@ -19,7 +19,7 @@ export function SiteHeader() {
       className="sticky top-0 z-50 border-b border-gold/20 bg-navy-deep/95 shadow-[0_10px_40px_rgba(0,0,0,.18)] backdrop-blur-xl"
       onKeyDown={(event) => { if (event.key === "Escape") setMenuOpen(false); }}
     >
-      <Container className="flex h-[76px] items-center justify-between gap-5 lg:h-[86px]">
+      <Container className="flex h-[70px] items-center justify-between gap-5 lg:h-[74px]">
         <BrandMark />
 
         <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex">
@@ -58,7 +58,7 @@ export function SiteHeader() {
         id="mobile-navigation"
         aria-label="Mobile navigation"
         hidden={!menuOpen}
-        className="absolute inset-x-0 top-full max-h-[calc(100dvh-76px)] overflow-y-auto border-b border-gold/25 bg-navy px-5 py-5 shadow-2xl lg:hidden"
+        className="absolute inset-x-0 top-full max-h-[calc(100dvh-70px)] overflow-y-auto border-b border-gold/25 bg-navy px-5 py-5 shadow-2xl lg:hidden"
       >
         <ul className="mx-auto flex max-w-7xl flex-col gap-1">
           {primaryNavigation.map((item) => {

@@ -28,7 +28,7 @@ test("FAQ includes direct booking guidance and appropriate limitations", () => {
 
 test("homepage uses the shared design system and direct booking integration", () => {
   const page = source("src/app/page.tsx");
-  for (const tag of ["Container", "ActionLink", "CelestialArt", "HomeFaq", "servicePreviews", "WhatsAppBookingLink"]) {
+  for (const tag of ["Container", "ActionLink", "CelestialArt", "AstrologerVisual", "servicePreviews", "WhatsAppBookingLink"]) {
     assert.ok(page.includes(tag), tag);
   }
   assert.ok(!page.includes("Priya Sharma"));
@@ -42,4 +42,32 @@ test("all six completed service routes are statically generated with metadata", 
   assert.match(page, /generateMetadata/);
   assert.doesNotMatch(page, /index: false, follow: false/);
   assert.match(page, /<WhatsAppBookingLink service=\{service.title\}/);
+});
+
+test("reference-inspired homepage has the seven requested sections in the correct order", () => {
+  const page = source("src/app/page.tsx");
+  const order = [
+    "<HomeHero/>", "<ValuesStrip/>", "<Journey/>", "<WhyChoose/>",
+    "<Approach/>", "<Knowledge/>", "<ClosingCallToAction/>",
+  ];
+  let previous = -1;
+  for (const section of order) {
+    const index = page.indexOf(section);
+    assert.ok(index > previous, section + " is missing or out of order");
+    previous = index;
+  }
+  const styles = source("src/app/homepage.css");
+  for (const name of ["home-paper", "home-hero-cloud", "home-step-connector", "home-final-sky"]) {
+    assert.ok(styles.includes(name));
+  }
+});
+
+test("homepage keeps all service routes discoverable without unverifiable business claims", () => {
+  const page = source("src/app/page.tsx");
+  const footer = source("src/components/layout/site-footer.tsx");
+  assert.match(page, /servicePreviews\.map/);
+  assert.match(footer, /servicePreviews\.map/);
+  for (const absent of ["1000+", "10+ Years", "100% genuine", "Indore", "1999", "guaranteed success"]) {
+    assert.ok(!page.includes(absent), "Unverified claim: " + absent);
+  }
 });

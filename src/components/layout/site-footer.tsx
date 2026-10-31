@@ -1,6 +1,7 @@
-import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import Link from "next/link";
-import { policyNavigation, primaryNavigation } from "@/config/navigation";
+import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
+import { primaryNavigation, policyNavigation } from "@/config/navigation";
+import { servicePreviews } from "@/config/home";
 import { siteConfig } from "@/config/site";
 import { getConsultationWhatsAppUrl } from "@/lib/whatsapp";
 import { BrandMark } from "@/components/ui/brand-mark";
@@ -9,51 +10,63 @@ import { Icon } from "@/components/ui/icons";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-gold/20 bg-[#03111e]">
+    <footer className="border-t border-gold/20 bg-[#020b17]">
       <Container>
-        <div className="grid gap-11 py-14 sm:grid-cols-2 lg:grid-cols-[1.35fr_.7fr_.85fr_1fr] lg:gap-10 lg:py-20">
-          <div className="max-w-sm">
+        <div className="grid gap-9 py-11 sm:grid-cols-2 lg:grid-cols-[1.3fr_.75fr_.98fr_1.06fr] lg:gap-12 lg:py-14">
+          <div className="max-w-xs">
             <BrandMark />
-            <p className="mt-6 text-sm leading-7 text-muted">
-              Traditional astrology perspectives, presented with clarity and care.
-              Connect with {siteConfig.astrologer} to discuss a consultation.
+            <p className="mt-5 text-sm leading-7 text-cream/70">
+              Helping you explore life&apos;s questions through the traditions of astrology,
+              with clarity and thoughtful conversation.
             </p>
-            <WhatsAppBookingLink variant="outline" size="small" icon="message" className="mt-6">Chat on WhatsApp</WhatsAppBookingLink>
+            <WhatsAppBookingLink variant="outline" size="small" icon="message" className="mt-5">
+              Enquire on WhatsApp
+            </WhatsAppBookingLink>
           </div>
-
-          <div>
-            <h2 className="eyebrow mb-5">Explore</h2>
-            <ul className="space-y-3">
+          <nav aria-label="Footer quick links">
+            <h2 className="font-display text-lg font-semibold text-gold-light">Quick Links</h2>
+            <ul className="mt-4 space-y-2.5">
               {primaryNavigation.map((item) => (
-                <li key={item.href}><Link href={item.href} className="text-sm text-cream/75 transition-colors hover:text-gold">{item.label}</Link></li>
+                <li key={item.href}>
+                  <Link href={item.href} className="text-sm text-cream/70 transition-colors hover:text-gold-light">{item.label}</Link>
+                </li>
               ))}
             </ul>
-          </div>
-
-          <div>
-            <h2 className="eyebrow mb-5">Information</h2>
-            <ul className="space-y-3">
-              {policyNavigation.map((item) => (
-                <li key={item.href}><Link href={item.href} className="text-sm text-cream/75 transition-colors hover:text-gold">{item.label}</Link></li>
+          </nav>
+          <nav aria-label="Footer services">
+            <h2 className="font-display text-lg font-semibold text-gold-light">Our Services</h2>
+            <ul className="mt-4 space-y-2.5">
+              {servicePreviews.map((item) => (
+                <li key={item.slug}>
+                  <Link href={"/services/"+item.slug} className="text-sm text-cream/70 transition-colors hover:text-gold-light">
+                    {item.title}
+                  </Link>
+                </li>
               ))}
             </ul>
-          </div>
-
+          </nav>
           <div>
-            <h2 className="eyebrow mb-5">Get in touch</h2>
-            <div className="flex flex-col gap-4">
-              <a href={getConsultationWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm text-cream/75 transition-colors hover:text-gold">
-                <Icon name="message" size={19} className="mt-0.5 shrink-0 text-gold" /><span>+91 {siteConfig.whatsappNumber.slice(2)}<span className="mt-1 block text-xs text-muted">Consultations via WhatsApp</span></span>
+            <h2 className="font-display text-lg font-semibold text-gold-light">Get in Touch</h2>
+            <div className="mt-4 flex flex-col gap-4">
+              <a href={getConsultationWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm text-cream/70 transition-colors hover:text-gold-light">
+                <Icon name="message" size={18} className="mt-0.5 shrink-0 text-gold" />
+                <span>+91 {siteConfig.whatsappNumber.slice(2)}</span>
               </a>
-              <a href={`mailto:${siteConfig.contactEmail}`} className="flex items-start gap-3 break-all text-sm text-cream/75 transition-colors hover:text-gold">
-                <Icon name="mail" size={19} className="mt-0.5 shrink-0 text-gold" />{siteConfig.contactEmail}
+              <a href={`mailto:${siteConfig.contactEmail}`} className="flex items-start gap-3 break-all text-sm text-cream/70 transition-colors hover:text-gold-light">
+                <Icon name="mail" size={18} className="mt-0.5 shrink-0 text-gold" />
+                <span>{siteConfig.contactEmail}</span>
               </a>
+              <p className="text-xs leading-6 text-cream/55">Consultation details are confirmed directly. No appointment is booked automatically.</p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 border-t border-gold/15 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-gold/15 py-5 text-xs text-cream/55 lg:flex-row lg:items-center lg:justify-between">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <p>Astrology is interpretive guidance, not a substitute for professional advice.</p>
+          <nav aria-label="Policies" className="flex flex-wrap gap-x-5 gap-y-2">
+            {policyNavigation.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-gold-light">{item.label}</Link>
+            ))}
+          </nav>
         </div>
       </Container>
     </footer>
