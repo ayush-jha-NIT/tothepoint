@@ -26,7 +26,7 @@ test("draft policies contain meaningful accurate sections", () => {
 test("no invented refund deadlines or automatic reservations", () => {
   const refund=legalDrafts["refund-policy"];
   const all=refund.sections.map(s=>s.body).join(" ");
-  assert.match(all,/before paying/);
+  assert.match(all,/before (?:paying|sending payment)/);
   assert.doesNotMatch(all,/7-day guarantee|refund within 24 hours|100% refundable/i);
   assert.match(legalDrafts["terms-and-conditions"].sections.map(s=>s.body).join(" "),/enquiry only/);
 });
