@@ -55,30 +55,23 @@ function HomeHero() {
       </div>
       <div aria-hidden="true" className="home-hero-shade" />
       <Container className="home-hero-content relative z-10 flex items-center">
-        <div className="home-hero-copy max-w-[600px] py-10 sm:py-14 lg:py-20">
-          <nav aria-label="Breadcrumb" className="mb-8 sm:mb-12">
-            <ol className="flex items-center gap-2 text-xs text-gold-light/90 sm:text-sm">
-              <li><Link href="/" aria-current="page" className="hover:text-cream">Home</Link></li>
-              <li aria-hidden="true"><Icon name="chevron-right" size={15} /></li>
-              <li>Welcome</li>
-            </ol>
-          </nav>
-          <p className="home-kicker mb-4">Meet the person behind Tothepoint Astrology</p>
-          <h1 id="home-title" className="font-display text-[clamp(3.15rem,5.6vw,5.6rem)] leading-[1.07] tracking-[-.045em] text-cream">
+        <div className="home-hero-copy w-full max-w-[590px]">
+          <p className="home-kicker mb-3 sm:mb-4">Meet the person behind Tothepoint Astrology</p>
+          <h1 id="home-title" className="home-hero-title font-display text-cream">
             About
             <span className="block text-gold-light">Hariom Shrivastava</span>
           </h1>
-          <h2 className="mt-5 font-display text-lg leading-snug text-cream sm:text-2xl">
+          <h2 className="home-hero-subtitle mt-4 font-display text-lg leading-snug text-cream sm:text-xl lg:text-2xl">
             Astrology with Purpose. Guidance for a Better Tomorrow.
           </h2>
-          <p className="mt-4 max-w-[560px] text-sm leading-[1.8] text-cream/85 sm:text-base">
+          <p className="home-hero-description mt-3 max-w-[540px] text-sm leading-[1.7] text-cream/85 sm:text-base">
             At {siteConfig.name}, explore traditional Vedic astrology through a clear,
             personal conversation. Discuss relationships, career, life decisions and
             the questions that matter most to you.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <WhatsAppBookingLink icon="message">Book a Consultation</WhatsAppBookingLink>
-            <ActionLink href="/services" variant="outline">Explore Services</ActionLink>
+          <div className="home-hero-actions mt-6 flex flex-wrap gap-3">
+            <WhatsAppBookingLink icon="message" className="home-hero-button">Book a Consultation</WhatsAppBookingLink>
+            <ActionLink href="/services" variant="outline" className="home-hero-button">Explore Services</ActionLink>
           </div>
         </div>
       </Container>
@@ -132,8 +125,8 @@ function Journey() {
               { highlight: "Personal", title: "Discussion First" },
             ].map((item) => (
               <div key={item.title} className="rounded-md border border-gold/30 bg-[#0c2033]/65 px-2 py-5 text-center sm:px-3">
-                <p className="font-display text-xl font-semibold text-gold-light sm:text-3xl">{item.highlight}</p>
-                <p className="mt-2 text-[10px] leading-5 text-cream/75 sm:text-xs">{item.title}</p>
+                <p className="break-words font-display text-[clamp(1.05rem,4vw,1.5rem)] font-semibold text-gold-light sm:text-3xl">{item.highlight}</p>
+                <p className="mt-2 text-[11px] leading-5 text-cream/75 sm:text-xs">{item.title}</p>
               </div>
             ))}
           </div>
@@ -155,10 +148,10 @@ function WhyChoose() {
         </div>
         <div className="mt-9 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
           {reasons.map((item) => (
-            <article key={item.title} className="home-reason-card flex min-h-[205px] flex-col items-center rounded-lg border border-[#e7daca] px-4 py-7 text-center sm:px-6">
+            <article key={item.title} className="home-reason-card flex min-h-[205px] flex-col items-center rounded-lg border border-[#e7daca] px-3 py-6 text-center sm:px-6">
               <span className="text-[#8b5d1c]"><Icon name={item.icon} size={39} strokeWidth={1.5}/></span>
               <h3 className="mt-4 font-display text-base font-semibold text-[#142538] sm:text-lg">{item.title}</h3>
-              <p className="mt-2 text-xs leading-6 text-[#4f4a44] sm:text-sm">{item.text}</p>
+              <p className="mt-2 text-[13px] leading-[1.55] text-[#4f4a44] sm:text-sm">{item.text}</p>
             </article>
           ))}
         </div>
@@ -219,7 +212,7 @@ function Knowledge() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-2 border-t border-[#e2d3bf] pt-7" aria-label="Explore the six consultation services">
           {servicePreviews.map((service) => (
             <Link key={service.slug} href={"/services/"+service.slug}
-              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[#d8c3a4] bg-[#fff9ef] px-4 py-2 text-xs font-semibold text-[#684317] transition-colors hover:border-[#916222] hover:bg-white">
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#d8c3a4] bg-[#fff9ef] px-4 py-2 text-xs font-semibold text-[#684317] transition-colors hover:border-[#916222] hover:bg-white">
               <ServiceGlyph name={service.icon} size={20}/>{service.title}
             </Link>
           ))}

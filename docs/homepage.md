@@ -26,3 +26,11 @@ WhatsApp routes to the confirmed number **+91 7007962637**. The six consultation
 
 ## Validation
 `tests/homepage.test.mjs` verifies reference section order and absence of unverified claims. `tests/booking-integration.test.mjs` checks the retained WhatsApp flow. Existing CI includes ESLint, TypeScript, unit tests, production build, Chromium responsive E2E and automated axe accessibility checks.
+
+## Desktop hero fit and mobile usability
+
+The homepage hero is now sized relative to the available visual viewport below the 74px sticky header using `100svh`, with a `100vh` fallback, rather than an arbitrary 590px minimum. The nonessential homepage breadcrumb was removed and the typography and spacing are more compact on short laptop screens. Text is never forcibly clipped if visitors increase browser text size.
+
+On phones the hero flows vertically, the subject image appears below the content, and both primary CTA links have full-width 48px touch targets at narrow widths. Compact cards retain readable typography, and footer/service links have larger tap targets.
+
+Mobile navigation locks background scrolling, closes on Escape or backdrop tap, and restores keyboard focus. Mobile inputs, selects, and textareas render at 16px to avoid iOS Safari focus zoom. Tests cover 320px–430px phone widths and desktop viewports including 1280×720 and 1366×768.

@@ -28,7 +28,7 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2.5">
               {primaryNavigation.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-cream/70 transition-colors hover:text-gold-light">{item.label}</Link>
+                  <Link href={item.href} className="inline-flex min-h-11 items-center text-sm text-cream/70 transition-colors hover:text-gold-light sm:min-h-0">{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -38,7 +38,7 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2.5">
               {servicePreviews.map((item) => (
                 <li key={item.slug}>
-                  <Link href={"/services/"+item.slug} className="text-sm text-cream/70 transition-colors hover:text-gold-light">
+                  <Link href={"/services/"+item.slug} className="inline-flex min-h-11 items-center text-sm text-cream/70 transition-colors hover:text-gold-light sm:min-h-0">
                     {item.title}
                   </Link>
                 </li>
@@ -64,7 +64,7 @@ export function SiteFooter() {
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <nav aria-label="Policies" className="flex flex-wrap gap-x-5 gap-y-2">
             {policyNavigation.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:text-gold-light">{item.label}</Link>
+              <Link key={item.href} href={item.href} className="inline-flex min-h-11 items-center hover:text-gold-light sm:min-h-0">{item.label}</Link>
             ))}
           </nav>
         </div>

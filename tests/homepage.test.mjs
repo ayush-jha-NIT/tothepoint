@@ -82,3 +82,18 @@ test("homepage hero uses the exact generated image asset with responsive renderi
   assert.match(css, /home-hero-image/);
   assert.match(css, /object-position: 74% 44%/);
 });
+
+test("hero uses available desktop viewport height and mobile-safe sizing", () => {
+  const styles = source("src/app/homepage.css");
+  const header = source("src/components/layout/site-header.tsx");
+  const global = source("src/app/globals.css");
+  const page = source("src/app/page.tsx");
+  assert.match(styles, /100svh - 74px/);
+  assert.match(styles, /max-height:740px/);
+  assert.match(styles, /home-hero-button/);
+  assert.doesNotMatch(styles, /min-height: 590px/);
+  const hero = page.slice(page.indexOf("function HomeHero()"),page.indexOf("function ValuesStrip()"));
+  assert.doesNotMatch(hero, /Breadcrumb/);
+  assert.match(header, /document.body.style.overflow = "hidden"/);
+  assert.match(global, /font-size: 16px !important/);
+});

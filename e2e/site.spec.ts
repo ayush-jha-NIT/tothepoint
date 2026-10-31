@@ -8,7 +8,7 @@ const routes = [
 ];
 
 test("main pages are rendered with page headings and without horizontal overflow", async ({ page }) => {
-  for (const width of [360, 768, 1440]) {
+  for (const width of [320, 360, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const path of routes) {
       const response = await page.goto(path, { waitUntil: "domcontentloaded" });
@@ -98,4 +98,74 @@ test("home page initial load stays under a basic asset transfer budget", async (
   expect(transferred, "Header-reported transfer bytes should not exceed 3 MB").toBeLessThan(3_000_000);
   const fontCount = await page.evaluate(() => document.fonts.size);
   expect(fontCount, "Bundled external web fonts are not required").toBe(0);
+});
+
+test("desktop hero fits completely below the header at 100% zoom", async ({ page }) => {
+  for (const config of [
+    { width: 1280, height: 720 }, { width: 1366, height: 768 },
+    { width: 1440, height: 900 }, { width: 1920, height: 1080 },
+  ]) {
+    await page.setViewportSize(config);
+    await page.goto("/", { waitUntil: "networkidle" });
+    const positions = await page.evaluate(() => {
+      const header = document.querySelector("header")!.getBoundingClientRect();
+      const hero = document.querySelector(".home-hero")!.getBoundingClientRect();
+      const heading = document.querySelector("#home-title")!.getBoundingClientRect();
+      const buttons = [...document.querySelectorAll<HTMLElement>(".home-hero-button")];
+      return {
+        headerBottom: header.bottom, heroTop: hero.top, heroBottom: hero.bottom,
+        headingBottom: heading.bottom,
+        buttonBottom: Math.max(...buttons.map(b => b.getBoundingClientRect().bottom)),
+      };
+    });
+    expect(positions.heroTop).toBeGreaterThanOrEqual(positions.headerBottom - 2);
+    expect(positions.heroBottom, "desktop hero exceeds viewport").toBeLessThanOrEqual(config.height + 3);
+    expect(positions.headingBottom).toBeLessThan(positions.heroBottom);
+    expect(positions.buttonBottom).toBeLessThanOrEqual(positions.heroBottom);
+  }
+});
+
+test("phones show full-width booking controls and no horizontal page scroll", async ({ page }) => {
+  for (const width of [320, 360, 375, 390, 430]) {
+    await page.setViewportSize({ width, height: 740 });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    const metrics = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      pageWidth: document.documentElement.scrollWidth,
+      imageHeight: document.querySelector(".home-hero-photo")!.getBoundingClientRect().height,
+      links: [...document.querySelectorAll<HTMLElement>(".home-hero-button")].map(link => {
+        const bounds = link.getBoundingClientRect();
+        return { width: bounds.width, height: bounds.height, left: bounds.left, right: bounds.right };
+      }),
+    }));
+    expect(metrics.pageWidth - metrics.viewport, "horizontal overflow on phone").toBeLessThanOrEqual(2);
+    expect(metrics.imageHeight).toBeGreaterThan(200);
+    expect(metrics.links).toHaveLength(2);
+    for (const link of metrics.links) {
+      expect(link.height, "tap target too short").toBeGreaterThanOrEqual(44);
+      expect(link.left).toBeGreaterThanOrEqual(0);
+      expect(link.right).toBeLessThanOrEqual(width + 1);
+    }
+  }
+});
+
+test("mobile menu locks scrolling and restores focus on Escape", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible();
+  expect(await page.evaluate(() => document.body.style.overflow)).toBe("hidden");
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeHidden();
+  expect(await page.evaluate(() => document.body.style.overflow)).toBe("");
+  await expect(page.getByRole("button", { name: "Open navigation menu" })).toBeFocused();
+});
+
+test("contact fields stay at 16px on mobile to prevent iOS focus zoom", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.goto("/contact");
+  for (const field of ["contact-name", "contact-email", "contact-message"]) {
+    const size = await page.locator("#" + field).evaluate(el => parseFloat(getComputedStyle(el).fontSize));
+    expect(size).toBeGreaterThanOrEqual(16);
+  }
 });
