@@ -93,3 +93,47 @@
   }
   .about-photo-hero .about-photo-hero-actions > a { width: 100%; min-height: 48px; }
 }
+
+/* Reference-matched About page: compact editorial sections and horizontal process. */
+@media (min-width: 768px) {
+  .about-photo-hero,
+  .about-photo-hero .about-photo-hero-content {
+    min-height: clamp(440px, 57vw, 620px);
+  }
+  .about-photo-hero .about-photo-hero-title {
+    font-size: clamp(2.6rem, 4.2vw, 4.3rem);
+  }
+  .about-photo-hero .about-photo-hero-content {
+    padding-block: 42px;
+  }
+}
+.about-journey-portrait img { transform: scale(1.1); }
+.about-approach-section {
+  background-color: #031122;
+  background-image:
+    radial-gradient(circle at 92% 45%, rgba(197,141,63,.16), transparent 28%),
+    radial-gradient(1px 1px at 14% 20%, #e8b664 98%, transparent),
+    radial-gradient(1px 1px at 59% 65%, #e8b664 98%, transparent);
+  background-size: auto, 440px 320px, 520px 380px;
+}
+@media (min-width: 1024px) {
+  .about-step-line {
+    position: absolute;
+    top: 35px;
+    left: calc(50% + 49px);
+    width: calc(100% - 54px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(232,182,100,.85), rgba(232,182,100,.45));
+  }
+  .about-step-line::after {
+    content: "›";
+    position: absolute;
+    right: -1px;
+    top: -13px;
+    font-size: 23px;
+    color: #e8b664;
+  }
+}
+@media (max-width: 767px) {
+  .about-journey-portrait { max-width: 380px; }
+}
