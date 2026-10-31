@@ -2,6 +2,7 @@ import { canonicalPath, getSiteOrigin, breadcrumbSchema } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AboutCta } from "@/components/about/about-cta";
 import { AstrologerVisual } from "@/components/about/astrologer-visual";
@@ -10,6 +11,7 @@ import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
 import { aboutReasons, aboutValues, areasOfInterest, consultationSteps } from "@/config/about";
 import { siteConfig } from "@/config/site";
+import "./about-hero.css";
 
 export const metadata: Metadata = {
   alternates: { canonical: canonicalPath("/about") },
@@ -26,43 +28,47 @@ export const metadata: Metadata = {
 
 function AboutHero() {
   return (
-    <section aria-labelledby="about-heading" className="page-hero page-hero-about celestial-glow star-field relative overflow-hidden border-b border-gold/25 bg-navy-deep">
-      <div aria-hidden="true" className="pointer-events-none absolute right-[-9%] top-[-25%] size-[620px] rounded-full bg-[radial-gradient(circle,rgba(209,147,68,.15),transparent_63%)] blur-xl" />
-      <Container className="page-hero-inner relative grid min-h-[620px] items-center gap-10 pb-16 pt-12 lg:grid-cols-[1.06fr_.94fr] lg:gap-14 lg:pb-20 lg:pt-14">
-        <div className="max-w-2xl">
-          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-10">
+    <section
+      aria-labelledby="about-heading"
+      className="page-hero page-hero-about about-photo-hero relative isolate overflow-hidden border-b border-gold/25 bg-navy-deep"
+    >
+      <div className="about-photo-hero-media">
+        <Image
+          src="/images/about-hero.png"
+          alt="Astrology-themed portrait of Hariom Shrivastava with a glowing zodiac wheel, brass lamp and traditional books"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="about-photo-hero-image"
+        />
+      </div>
+      <div className="about-photo-hero-shade" aria-hidden="true" />
+      <Container className="page-hero-inner about-photo-hero-content relative z-10 flex items-center">
+        <div className="about-photo-hero-copy w-full max-w-[590px]">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-6">
             <ol className="flex items-center gap-2 text-sm text-cream/75">
               <li><Link href="/" className="transition-colors hover:text-gold-light">Home</Link></li>
               <li aria-hidden="true"><Icon name="chevron-right" size={15} className="text-gold" /></li>
               <li aria-current="page" className="text-gold-light">About</li>
             </ol>
           </nav>
-          <p className="eyebrow">The person behind Tothepoint Astrology</p>
-          <h1 id="about-heading" className="page-hero-title mt-4 font-display text-[clamp(2.9rem,5.2vw,5.15rem)] leading-[1.09] tracking-[-.035em] text-cream">
-            About <span className="block gold-gradient-text">Hariom Shrivastava</span>
+          <h1 id="about-heading" className="page-hero-title about-photo-hero-title font-display text-cream">
+            About <span className="block text-gold-light">Hariom Shrivastava</span>
           </h1>
-          <h2 className="mt-6 font-display text-xl leading-snug text-cream sm:text-2xl">
-            Astrology with Purpose. Guidance for a Better Tomorrow.
+          <h2 className="about-photo-hero-subtitle mt-5 font-display italic leading-snug text-cream">
+            Astrology with Purpose, Guidance for a Better Tomorrow.
           </h2>
-          <p className="page-hero-lead mt-5 max-w-xl text-[15px] leading-8 text-cream/75 sm:text-base">
-            Welcome to {siteConfig.name}. Discover a place to explore traditional astrology perspectives
-            on relationships, career, life decisions and personal questions, in conversation with {siteConfig.astrologer}.
+          <div aria-hidden="true" className="about-photo-hero-rule mt-5" />
+          <p className="page-hero-lead about-photo-hero-lead mt-5 max-w-[540px] text-cream/90">
+            At {siteConfig.name}, the aim is to make traditional Vedic astrology
+            clear, practical and approachable for today&apos;s questions.
+            Explore themes of relationships, career and personal direction
+            with {siteConfig.astrologer}.
           </p>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-muted">
-            Our aim is to make the consultation process approachable: start with a question,
-            understand the service and arrange the details directly.
-          </p>
-          <div className="page-hero-actions mt-6 flex flex-wrap gap-3">
-            <WhatsAppBookingLink icon="arrow-right">Book a Consultation</WhatsAppBookingLink>
-            <ActionLink href="/services" variant="outline" icon="arrow-right">Explore Services</ActionLink>
-          </div>
-        </div>
-        <div className="page-hero-art relative mx-auto w-full max-w-[520px]">
-          <div aria-hidden="true" className="absolute -inset-5 rounded-full border border-gold/10 blur-[2px]" />
-          <AstrologerVisual />
-          <div className="absolute -bottom-4 -left-2 z-20 hidden rounded-lg border border-gold/35 bg-navy-deep/90 px-5 py-4 shadow-xl backdrop-blur sm:block">
-            <p className="text-[10px] font-semibold uppercase tracking-[.17em] text-gold-light">Guidance • Clarity</p>
-            <p className="mt-1 font-display text-base text-cream">Better Tomorrow</p>
+          <div className="page-hero-actions about-photo-hero-actions mt-7 flex flex-wrap gap-3">
+            <WhatsAppBookingLink icon="message">Book a Consultation</WhatsAppBookingLink>
+            <ActionLink href="/services" variant="outline">Explore Services</ActionLink>
           </div>
         </div>
       </Container>

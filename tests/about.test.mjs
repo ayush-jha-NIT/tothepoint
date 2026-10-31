@@ -41,3 +41,15 @@ test("biographical content does not invent formal qualifications or experience n
   const visual = read("src/components/about/astrologer-visual.tsx");
   assert.match(visual, /Decorative stand-in/);
 });
+
+test("approved About hero image replaces the hero's decorative placeholder", () => {
+  const page = read("src/app/about/page.tsx");
+  const hero = page.slice(page.indexOf("function AboutHero()"), page.indexOf("function ValuesStrip()"));
+  const css = read("src/app/about/about-hero.css");
+  assert.match(hero, /src="\/images\/about-hero\.png"/);
+  assert.match(hero, /priority/);
+  assert.match(hero, /about-photo-hero-image/);
+  assert.doesNotMatch(hero, /<AstrologerVisual/);
+  assert.match(css, /100svh - 74px/);
+  assert.match(css, /max-width:767px/);
+});

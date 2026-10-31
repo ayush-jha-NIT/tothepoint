@@ -32,3 +32,11 @@ The page contains:
 - Supply and approve actual profile portrait, factual biography and verified qualifications.
 - If education or experience details are provided, add a separate factual credentials section.
 - Verify all service descriptions and business claims with the client.
+
+## Approved About Hero Replacement
+
+The About page now uses the exact user-supplied image at `public/images/about-hero.png`. The image is stored in GitHub, rather than existing only as an AI-generated chat attachment. The original illustration remains below the hero in the historical "Our Story" section.
+
+The image itself contains decorative text, which is masked under a navy gradient on desktop so the readable and keyboard-accessible heading, consultation CTA and services link are real HTML. On mobile the copy flows above the image; the image focuses on the person and wheel to avoid duplicated text. The hero remains viewport-aware below the sticky header.
+
+The image is loaded by `next/image` with `priority` and responsive sizing, with no remote runtime dependency. The temporary import workflow used to transfer the approved PNG was removed after the asset was committed.
