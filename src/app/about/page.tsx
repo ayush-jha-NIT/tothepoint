@@ -5,11 +5,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AboutCta } from "@/components/about/about-cta";
-import { AstrologerVisual } from "@/components/about/astrologer-visual";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icons";
-import { aboutReasons, aboutValues, areasOfInterest, consultationSteps } from "@/config/about";
+import { aboutReasons, aboutValues } from "@/config/about";
 import { siteConfig } from "@/config/site";
 import "./about-hero.css";
 
@@ -96,36 +95,31 @@ function ValuesStrip() {
   );
 }
 
+
 function OurStory() {
   return (
-    <section id="our-approach" aria-labelledby="story-heading" className="celestial-glow relative overflow-hidden border-y border-gold/20 bg-navy-deep py-16 sm:py-24">
-      <Container className="grid items-center gap-12 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
-        <AstrologerVisual variant="journey" />
-        <div className="max-w-2xl">
-          <p className="eyebrow">Our perspective</p>
-          <h2 id="story-heading" className="mt-4 font-display text-4xl leading-tight text-cream sm:text-5xl">
-            A Thoughtful Approach to <span className="gold-gradient-text">Astrology</span>
-          </h2>
-          <p className="mt-6 text-[15px] leading-8 text-cream/75">
-            {siteConfig.name} brings together a range of consultation topics associated with
-            traditional Indian astrology. From birth charts and compatibility to Vastu and Muhurat,
-            each topic offers its own way of thinking about a question or situation.
-          </p>
-          <p className="mt-5 text-[15px] leading-8 text-cream/75">
-            With {siteConfig.astrologer}, the first step is a conversation about what you want to explore.
-            We explain how to get in touch, what details may be useful and how the consultation can be arranged.
-          </p>
-          <div className="mt-9 grid gap-4 border-t border-gold/20 pt-7 sm:grid-cols-2">
-            <div className="rounded-xl border border-gold/25 bg-navy-soft/55 p-5">
-              <Icon name="message" size={25} className="text-gold-light" />
-              <h3 className="mt-4 font-display text-lg text-cream">A personal conversation</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">Start with your questions, not a one-size-fits-all formula.</p>
-            </div>
-            <div className="rounded-xl border border-gold/25 bg-navy-soft/55 p-5">
-              <Icon name="shield" size={25} className="text-gold-light" />
-              <h3 className="mt-4 font-display text-lg text-cream">Your decisions remain yours</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">Astrology is interpretive guidance and does not guarantee results.</p>
-            </div>
+    <section aria-labelledby="story-heading" className="relative overflow-hidden border-y border-gold/20 bg-navy-deep py-14 sm:py-20">
+      <Container className="grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
+        <div className="about-journey-portrait relative mx-auto aspect-[.98] w-full max-w-[470px] overflow-hidden rounded-[47%_47%_16px_16px] border border-gold/25">
+          <Image src="/images/about-hero.png" alt="Traditional astrology portrait imagery" fill sizes="(max-width: 1024px) 90vw, 470px" className="object-cover object-[78%_50%]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/35 to-transparent" />
+        </div>
+        <div>
+          <p className="eyebrow">My Journey</p>
+          <h2 id="story-heading" className="mt-3 font-display text-3xl leading-tight text-cream sm:text-5xl">From Curiosity to a Life of Astrology</h2>
+          <p className="mt-5 text-[15px] leading-8 text-cream/75">My interest in astrology is rooted in the questions people ask about life, relationships and the decisions that shape their future. Traditional Vedic perspectives offer a way to reflect on those questions with care.</p>
+          <p className="mt-4 text-[15px] leading-8 text-cream/75">Through Tothepoint Astrology, I aim to explain these ideas in an accessible way, with personal conversations and practical understanding at the centre of every consultation.</p>
+          <div className="mt-7 grid grid-cols-3 gap-3">
+            {[
+              ["Vedic", "Traditional knowledge"],
+              ["Personal", "Individual guidance"],
+              ["6", "Consultation topics"],
+            ].map(([value, label]) => (
+              <div key={label} className="rounded-lg border border-gold/25 bg-navy-soft/45 px-2 py-5 text-center">
+                <strong className="block font-display text-2xl text-gold-light sm:text-3xl">{value}</strong>
+                <span className="mt-2 block text-xs leading-5 text-cream/70">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
@@ -135,25 +129,18 @@ function OurStory() {
 
 function Reasons() {
   return (
-    <section aria-labelledby="reasons-heading" className="bg-cream py-16 text-navy sm:py-24">
+    <section aria-labelledby="reasons-heading" className="bg-cream py-14 text-navy sm:py-20">
       <Container>
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="eyebrow !text-[#a16b2b]">Our commitment</p>
-          <h2 id="reasons-heading" className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
-            Why Choose <span className="text-[#ae7735]">Tothepoint Astrology?</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#4e514e] sm:text-base">
-            A welcoming way to explore traditional astrology themes while keeping your choices and questions at the center.
-          </p>
+        <div className="mx-auto mb-9 max-w-3xl text-center">
+          <h2 id="reasons-heading" className="font-display text-3xl leading-tight sm:text-4xl">Why Choose Tothepoint Astrology?</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#514b42]">Traditional Vedic perspectives presented with a clear, practical and personal approach.</p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {aboutReasons.map((reason) => (
-            <article key={reason.title} className="flex h-full flex-col items-center rounded-xl border border-[#e3d5bf] bg-[#fffaf2] px-6 py-8 text-center shadow-[0_12px_28px_rgba(72,42,15,.07)]">
-              <div className="flex size-14 items-center justify-center rounded-full bg-[#f6ead9] text-[#a9752c]">
-                <Icon name={reason.icon} size={29} />
-              </div>
-              <h3 className="mt-5 font-display text-xl font-semibold">{reason.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[#4e514e]">{reason.description}</p>
+            <article key={reason.title} className="flex flex-col items-center rounded-xl border border-[#e6d9c7] bg-[#fffaf2] px-5 py-7 text-center shadow-[0_8px_25px_rgba(72,42,15,.06)]">
+              <Icon name={reason.icon} size={35} className="text-[#a77734]" />
+              <h3 className="mt-4 font-display text-lg font-semibold">{reason.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#514b42]">{reason.description}</p>
             </article>
           ))}
         </div>
@@ -164,28 +151,26 @@ function Reasons() {
 
 function ConsultationApproach() {
   return (
-    <section aria-labelledby="process-heading" className="celestial-glow star-field border-y border-gold/25 bg-navy py-16 sm:py-24">
-      <Container>
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="eyebrow">Our approach</p>
-          <h2 id="process-heading" className="mt-4 font-display text-4xl text-cream sm:text-5xl">A Clear, Simple Process</h2>
-          <p className="mt-4 text-sm leading-7 text-cream/75 sm:text-base">From your first question to the conversation itself, here is what to expect.</p>
+    <section id="our-approach" aria-labelledby="process-heading" className="about-approach-section star-field relative overflow-hidden border-y border-gold/20 bg-navy-deep py-14 sm:py-20">
+      <Container className="relative z-10">
+        <div className="mb-10 text-center">
+          <h2 id="process-heading" className="font-display text-3xl text-gold-light sm:text-4xl">My Approach</h2>
+          <p className="mt-3 text-sm text-cream/70">A balanced blend of ancient wisdom and modern understanding.</p>
         </div>
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-          {consultationSteps.map((step, index) => (
-            <li key={step.number} className="relative flex flex-col items-center text-center">
-              <div className="relative flex size-[78px] items-center justify-center rounded-full border-2 border-gold/80 bg-navy-deep/90 text-gold-light shadow-[0_0_32px_rgba(232,182,100,.1)]">
-                <Icon name={step.icon} size={34} />
+        <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {[
+            { icon: "message" as const, title: "Understand", description: "Listen to your concerns and understand your personal goals." },
+            { icon: "star" as const, title: "Interpret", description: "Explore traditional interpretations of relevant charts and topics." },
+            { icon: "sparkles" as const, title: "Guide", description: "Explain perspectives clearly, without promising outcomes." },
+            { icon: "shield" as const, title: "Support", description: "Respect your choices as you decide what comes next." },
+          ].map((step, index) => (
+            <li key={step.title} className="relative flex flex-col items-center text-center">
+              <div className="flex size-[72px] items-center justify-center rounded-full border-2 border-gold bg-navy-deep text-gold-light">
+                <Icon name={step.icon} size={32} />
               </div>
-              {index < consultationSteps.length - 1 && (
-                <div aria-hidden="true" className="absolute left-[calc(50%+50px)] right-[-47%] top-[37px] hidden items-center lg:flex">
-                  <div className="h-px w-full bg-gradient-to-r from-gold/70 to-gold/30" />
-                  <Icon name="arrow-right" size={19} className="-ml-2 shrink-0 text-gold-light" />
-                </div>
-              )}
-              <p className="mt-5 text-xs font-bold tracking-[.18em] text-gold-light">STEP {step.number}</p>
-              <h3 className="mt-2 font-display text-xl text-cream">{step.title}</h3>
-              <p className="mt-2 max-w-xs px-2 text-sm leading-7 text-muted">{step.description}</p>
+              {index < 3 && <div aria-hidden="true" className="about-step-line" />}
+              <h3 className="mt-4 font-display text-lg text-gold-light">{index + 1}. {step.title}</h3>
+              <p className="mt-2 max-w-[245px] text-sm leading-6 text-cream/70">{step.description}</p>
             </li>
           ))}
         </ol>
@@ -194,29 +179,26 @@ function ConsultationApproach() {
   );
 }
 
-function Disciplines() {
+function Expertise() {
+  const items = [
+    { icon: "star" as const, title: "Classical Texts", description: "An interest in foundational Vedic astrology traditions and texts." },
+    { icon: "sparkles" as const, title: "Continuous Learning", description: "Ongoing study and thoughtful interpretation of traditional ideas." },
+    { icon: "calendar" as const, title: "Consultation Practice", description: "Personal conversations focused on individual questions and circumstances." },
+    { icon: "shield" as const, title: "Areas of Expertise", description: "Kundli, relationships, career, numerology, Vastu and Muhurat." },
+  ];
   return (
-    <section id="disciplines" aria-labelledby="disciplines-heading" className="bg-cream py-16 text-navy sm:py-24">
+    <section id="disciplines" aria-labelledby="expertise-heading" className="bg-cream py-14 text-navy sm:py-20">
       <Container>
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="eyebrow !text-[#a16b2b]">Topics to explore</p>
-          <h2 id="disciplines-heading" className="mt-3 font-display text-4xl sm:text-5xl">Traditional Disciplines & Services</h2>
-          <p className="mt-4 text-sm leading-7 text-[#4e514e] sm:text-base">
-            Learn which kind of consultation relates to your questions. Detailed services and availability are confirmed directly.
-          </p>
+        <div className="mb-9 text-center">
+          <h2 id="expertise-heading" className="font-display text-3xl sm:text-4xl">Education &amp; Expertise</h2>
+          <p className="mt-2 text-sm text-[#514b42]">A foundation in traditional Vedic sources and a commitment to continued learning.</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {areasOfInterest.map((area, index) => (
-            <article key={area.slug} className="group flex flex-col rounded-xl border border-[#e1cbaa] bg-[#fffaf2] p-6 shadow-[0_12px_28px_rgba(72,42,15,.06)] transition-colors hover:border-[#ae7735] sm:p-7">
-              <div className="flex items-center justify-between">
-                <span className="font-display text-3xl text-[#ad772d]">{String(index + 1).padStart(2, "0")}</span>
-                <Icon name="sparkles" size={20} className="text-[#c99e67]" />
-              </div>
-              <h3 className="mt-6 font-display text-xl font-semibold">{area.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-7 text-[#4e514e]">{area.description}</p>
-              <Link href={`/services/${area.slug}`} className="mt-6 inline-flex min-h-10 items-center gap-2 self-start text-sm font-semibold text-[#965d1e] transition-colors hover:text-navy">
-                Explore this service <Icon name="arrow-right" size={16} />
-              </Link>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+          {items.map((item, index) => (
+            <article key={item.title} className={["flex flex-col items-center px-5 text-center", index > 0 ? "lg:border-l lg:border-[#deceb9]" : ""].join(" ")}>
+              <Icon name={item.icon} size={32} className="text-[#ab7a37]" />
+              <h3 className="mt-4 font-display text-lg font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#514b42]">{item.description}</p>
             </article>
           ))}
         </div>
@@ -234,7 +216,7 @@ export default function AboutPage() {
       <OurStory />
       <Reasons />
       <ConsultationApproach />
-      <Disciplines />
+      <Expertise />
       <AboutCta />
     </>
   );
