@@ -15,8 +15,4 @@ export const policyNavigation = [
 
 /** These pages are placeholders until their corresponding roadmap phases. */
 export const placeholderPages: Record<string, { title: string; message: string; phase: string }> = {
-  contact: { title: "Contact Us", message: "Reach out directly for consultation inquiries.", phase: "Part 10" },
-  "privacy-policy": { title: "Privacy Policy", message: "An approved privacy policy will appear here before launch.", phase: "Part 11" },
-  "terms-and-conditions": { title: "Terms & Conditions", message: "Approved service terms will appear here before launch.", phase: "Part 11" },
-  "refund-policy": { title: "Refund Policy", message: "The approved refund and cancellation rules will appear here before launch.", phase: "Part 11" },
 };

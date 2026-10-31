@@ -1,0 +1,1 @@
+import type { Metadata } from "next"; import { LegalPage } from "@/components/legal/legal-page"; export const metadata: Metadata = { title: "Refund & Cancellation Policy", description: "Draft refund information pending operator confirmation.", robots: { index: false, follow: true } }; export default function RefundPage() { return <LegalPage kind="refund-policy"/>; }
