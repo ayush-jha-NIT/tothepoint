@@ -28,9 +28,9 @@ function AboutHero() {
   return (
     <section aria-labelledby="about-heading" className="celestial-glow star-field relative overflow-hidden border-b border-gold/25 bg-navy-deep">
       <div aria-hidden="true" className="pointer-events-none absolute right-[-9%] top-[-25%] size-[620px] rounded-full bg-[radial-gradient(circle,rgba(209,147,68,.15),transparent_63%)] blur-xl" />
-      <Container className="relative grid min-h-[620px] items-center gap-10 pb-16 pt-12 lg:grid-cols-[1.06fr_.94fr] lg:gap-14 lg:pb-20 lg:pt-14">
+      <Container className="page-hero-inner relative grid min-h-[620px] items-center gap-10 pb-16 pt-12 lg:grid-cols-[1.06fr_.94fr] lg:gap-14 lg:pb-20 lg:pt-14">
         <div className="max-w-2xl">
-          <nav aria-label="Breadcrumb" className="mb-10">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-10">
             <ol className="flex items-center gap-2 text-sm text-cream/75">
               <li><Link href="/" className="transition-colors hover:text-gold-light">Home</Link></li>
               <li aria-hidden="true"><Icon name="chevron-right" size={15} className="text-gold" /></li>
@@ -38,13 +38,13 @@ function AboutHero() {
             </ol>
           </nav>
           <p className="eyebrow">The person behind Tothepoint Astrology</p>
-          <h1 id="about-heading" className="mt-4 font-display text-[clamp(2.9rem,5.2vw,5.15rem)] leading-[1.09] tracking-[-.035em] text-cream">
+          <h1 id="about-heading" className="page-hero-title mt-4 font-display text-[clamp(2.9rem,5.2vw,5.15rem)] leading-[1.09] tracking-[-.035em] text-cream">
             About <span className="block gold-gradient-text">Hariom Shrivastava</span>
           </h1>
           <h2 className="mt-6 font-display text-xl leading-snug text-cream sm:text-2xl">
             Astrology with Purpose. Guidance for a Better Tomorrow.
           </h2>
-          <p className="mt-5 max-w-xl text-[15px] leading-8 text-cream/75 sm:text-base">
+          <p className="page-hero-lead mt-5 max-w-xl text-[15px] leading-8 text-cream/75 sm:text-base">
             Welcome to {siteConfig.name}. Discover a place to explore traditional astrology perspectives
             on relationships, career, life decisions and personal questions, in conversation with {siteConfig.astrologer}.
           </p>
@@ -52,12 +52,12 @@ function AboutHero() {
             Our aim is to make the consultation process approachable: start with a question,
             understand the service and arrange the details directly.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="page-hero-actions mt-6 flex flex-wrap gap-3">
             <WhatsAppBookingLink icon="arrow-right">Book a Consultation</WhatsAppBookingLink>
             <ActionLink href="/services" variant="outline" icon="arrow-right">Explore Services</ActionLink>
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-[520px]">
+        <div className="page-hero-art relative mx-auto w-full max-w-[520px]">
           <div aria-hidden="true" className="absolute -inset-5 rounded-full border border-gold/10 blur-[2px]" />
           <AstrologerVisual />
           <div className="absolute -bottom-4 -left-2 z-20 hidden rounded-lg border border-gold/35 bg-navy-deep/90 px-5 py-4 shadow-xl backdrop-blur sm:block">

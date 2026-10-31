@@ -169,3 +169,77 @@ test("contact fields stay at 16px on mobile to prevent iOS focus zoom", async ({
     expect(size).toBeGreaterThanOrEqual(16);
   }
 });
+
+test("internal-page heroes fit at 100% desktop zoom without clipped content", async ({ page }) => {
+  test.setTimeout(180_000);
+  const pageRoutes = [
+    "/about", "/services",
+    "/services/kundli-analysis", "/services/marriage-relationship",
+    "/services/career-guidance", "/services/numerology",
+    "/services/vastu", "/services/muhurat",
+    "/blog", "/blog/understanding-kundli-basics",
+    "/blog/relationship-compatibility-in-vedic-astrology",
+    "/blog/career-questions-and-vedic-astrology",
+    "/blog/numerology-numbers-and-meaning",
+    "/blog/vastu-basics-for-home", "/blog/muhurat-and-traditional-timing",
+    "/testimonials", "/contact",
+    "/privacy-policy", "/terms-and-conditions", "/refund-policy",
+  ];
+  for (const viewport of [
+    { width: 1280, height: 720 }, { width: 1366, height: 768 },
+    { width: 1440, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport);
+    for (const path of pageRoutes) {
+      await page.goto(path, { waitUntil: "domcontentloaded" });
+      const hero = page.locator(".page-hero").first();
+      await expect(hero, path).toBeVisible();
+      const positions = await page.evaluate(() => {
+        const box = document.querySelector(".page-hero")!.getBoundingClientRect();
+        const title = document.querySelector(".page-hero h1")!.getBoundingClientRect();
+        const header = document.querySelector("header")!.getBoundingClientRect();
+        return {
+          top: box.top, bottom: box.bottom,
+          headerBottom: header.bottom, titleTop: title.top, titleBottom: title.bottom,
+          viewportWidth: document.documentElement.clientWidth,
+          pageWidth: document.documentElement.scrollWidth,
+        };
+      });
+      expect(positions.top, `${path}: hero header overlap at ${viewport.width}x${viewport.height}`).toBeGreaterThanOrEqual(positions.headerBottom - 3);
+      expect(positions.bottom, `${path}: hero overflows the visible screen at ${viewport.width}x${viewport.height}`).toBeLessThanOrEqual(viewport.height + 4);
+      expect(positions.titleTop, path + ": title clipped above hero").toBeGreaterThanOrEqual(positions.top - 2);
+      expect(positions.titleBottom, path + ": title clipped below hero").toBeLessThanOrEqual(positions.bottom + 2);
+      expect(positions.pageWidth - positions.viewportWidth, path + ": horizontal overflow").toBeLessThanOrEqual(2);
+    }
+  }
+});
+
+test("internal heroes remain readable and scrollable on small phones", async ({ page }) => {
+  test.setTimeout(110_000);
+  const routes = [
+    "/about", "/services", "/services/kundli-analysis",
+    "/blog", "/blog/understanding-kundli-basics",
+    "/testimonials", "/contact", "/privacy-policy",
+  ];
+  for (const width of [320, 390, 430]) {
+    await page.setViewportSize({ width, height: 740 });
+    for (const path of routes) {
+      await page.goto(path, { waitUntil: "domcontentloaded" });
+      const size = await page.evaluate(() => {
+        const hero = document.querySelector(".page-hero")!.getBoundingClientRect();
+        const title = document.querySelector(".page-hero h1")!.getBoundingClientRect();
+        return {
+          pageWidth: document.documentElement.scrollWidth,
+          viewportWidth: document.documentElement.clientWidth,
+          titleBottom: title.bottom,
+          heroBottom: hero.bottom,
+          buttons: [...document.querySelectorAll<HTMLElement>(".page-hero-actions > a")]
+            .map(el => el.getBoundingClientRect().height),
+        };
+      });
+      expect(size.pageWidth-size.viewportWidth, path+" phone overflow").toBeLessThanOrEqual(2);
+      expect(size.titleBottom, path+" heading clipped").toBeLessThanOrEqual(size.heroBottom + 2);
+      for (const height of size.buttons) expect(height, path+" touch target too small").toBeGreaterThanOrEqual(44);
+    }
+  }
+});

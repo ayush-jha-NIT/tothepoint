@@ -53,9 +53,9 @@ export default async function ServicePage({ params }: Props) {
       {/* Hero and breadcrumbs */}
       <section aria-labelledby="service-title" className="celestial-glow star-field relative isolate overflow-hidden border-b border-gold/25 bg-navy-deep">
         <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-44 size-[640px] rounded-full bg-[radial-gradient(circle,rgba(194,133,54,.15),transparent_64%)] blur-xl" />
-        <Container className="relative grid items-center gap-10 pb-14 pt-10 lg:min-h-[570px] lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:pb-20 lg:pt-12">
+        <Container className="page-hero-inner relative grid items-center gap-10 pb-14 pt-10 lg:min-h-[570px] lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:pb-20 lg:pt-12">
           <div className="max-w-2xl">
-            <nav aria-label="Breadcrumb" className="mb-10">
+            <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-10">
               <ol className="flex flex-wrap items-center gap-2 text-xs text-cream/70 sm:text-sm">
                 <li><Link href="/" className="rounded text-cream/75 transition-colors hover:text-gold-light">Home</Link></li>
                 <li aria-hidden="true"><Icon name="chevron-right" size={15} className="text-gold" /></li>
@@ -65,12 +65,12 @@ export default async function ServicePage({ params }: Props) {
               </ol>
             </nav>
             <p className="eyebrow">Tothepoint Astrology • {service.title}</p>
-            <h1 id="service-title" className="mt-5 font-display text-[clamp(3.15rem,5.6vw,5.65rem)] leading-[1.06] tracking-[-.035em] text-cream">
+            <h1 id="service-title" className="page-hero-title mt-5 font-display text-[clamp(3.15rem,5.6vw,5.65rem)] leading-[1.06] tracking-[-.035em] text-cream">
               {service.title}
             </h1>
             <p className="mt-5 font-display text-xl leading-snug text-gold-light sm:text-2xl">{profile.heroLine}</p>
-            <p className="mt-5 max-w-xl text-sm leading-8 text-cream/75 sm:text-base">{profile.introduction}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <p className="page-hero-lead mt-5 max-w-xl text-sm leading-8 text-cream/75 sm:text-base">{profile.introduction}</p>
+            <div className="page-hero-actions mt-6 flex flex-wrap gap-3">
               <WhatsAppBookingLink service={service.title} icon="message">Book Consultation</WhatsAppBookingLink>
               <WhatsAppBookingLink service={service.title} variant="outline" icon="arrow-right">Chat on WhatsApp</WhatsAppBookingLink>
             </div>
@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: Props) {
               Messaging us starts an enquiry, not a confirmed booking. Availability, consultation format and fees are agreed directly.
             </p>
           </div>
-          <div className="relative mx-auto w-full max-w-[510px] overflow-hidden rounded-2xl border border-gold/35 bg-navy-soft/70 p-3 shadow-[0_25px_80px_rgba(0,0,0,.28)] sm:p-5">
+          <div className="page-hero-art relative mx-auto w-full max-w-[510px] overflow-hidden rounded-2xl border border-gold/35 bg-navy-soft/70 p-3 shadow-[0_25px_80px_rgba(0,0,0,.28)] sm:p-5">
             <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(ellipse_at_50%_40%,rgba(229,171,87,.17),transparent_60%)]" />
             <div className="relative overflow-hidden rounded-xl border border-gold/20">
               <ServiceArtwork name={service.icon} />

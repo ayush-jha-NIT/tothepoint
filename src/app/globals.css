@@ -57,3 +57,97 @@ button:disabled { cursor: not-allowed; }
 @media (max-width: 767px) {
   input, select, textarea { font-size: 16px !important; }
 }
+
+
+/* Shared internal-page heroes. At 100% browser zoom the whole introductory
+   section fits below the sticky header on standard laptop/desktop viewports.
+   On narrow screens content reflows and is never clipped to a fixed height. */
+@media (min-width: 768px) {
+  .page-hero {
+    min-height: calc(100vh - 74px);
+    min-height: calc(100svh - 74px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 0;
+  }
+  .page-hero .page-hero-inner {
+    width: 100%;
+    min-height: 0;
+    padding-block: clamp(18px, 3.2svh, 42px);
+    align-content: center;
+  }
+  .page-hero .page-hero-breadcrumb { margin-bottom: clamp(12px, 2.3svh, 24px); }
+  .page-hero .page-hero-title {
+    font-size: clamp(2.25rem, 4.2vw, 4.5rem);
+    line-height: 1.075;
+    letter-spacing: -.032em;
+    overflow-wrap: anywhere;
+  }
+  .page-hero .page-hero-lead { margin-top: 12px; line-height: 1.55; }
+  .page-hero .page-hero-actions { margin-top: 18px; }
+  .page-hero .page-hero-art { min-width: 0; }
+  .page-hero-about .page-hero-art,
+  .page-hero-services .page-hero-art,
+  .page-hero-service-detail .page-hero-art,
+  .page-hero-testimonials .page-hero-art,
+  .page-hero-contact .page-hero-art {
+    width: min(100%, 48svh, 465px);
+  }
+  .page-hero-blog .page-hero-art .star-field {
+    height: clamp(180px, 32svh, 305px) !important;
+    min-height: 0 !important;
+  }
+  /* Articles contain their hero image as well as copy: constrain that image,
+     instead of making the whole section taller than the laptop screen. */
+  .page-hero-article .page-hero-inner { display: flex; flex-direction: column; justify-content: center; }
+  .page-hero-article .page-hero-article-art { margin-top: clamp(12px, 2.5svh, 22px); }
+  .page-hero-article .page-hero-article-art .star-field {
+    height: clamp(120px, 23svh, 215px) !important;
+    min-height: 0 !important;
+  }
+  .page-hero-legal .page-hero-inner { padding-block: clamp(20px, 3.5svh, 44px); }
+  .page-hero-legal .page-hero-policy-note { margin-top: 16px; padding: 16px; }
+}
+@media (min-width: 768px) and (max-height: 760px) {
+  .page-hero .page-hero-inner { padding-block: 16px; }
+  .page-hero .page-hero-title { font-size: clamp(2.05rem, 3.5vw, 3.45rem); line-height: 1.06; }
+  .page-hero .page-hero-breadcrumb { margin-bottom: 12px; }
+  .page-hero .page-hero-lead { margin-top: 10px; font-size: .93rem; line-height: 1.45; }
+  .page-hero .page-hero-actions { margin-top: 14px; }
+  .page-hero .page-hero-art { max-width: 42svh; }
+  .page-hero .page-hero-art svg { max-height: 42svh; }
+  .page-hero .eyebrow { font-size: .68rem; }
+  .page-hero-service-detail .page-hero-inner > div:first-child > p:last-child { margin-top: 12px; }
+  .page-hero-article .page-hero-article-art .star-field {
+    height: clamp(110px, 20svh, 160px) !important;
+  }
+  .page-hero-article .page-hero-inner > div.text-center > p { margin-top: 10px; line-height: 1.45; }
+  .page-hero-article .page-hero-inner > div.text-center > div { margin-top: 10px; }
+  .page-hero-blog .page-hero-art .star-field {
+    height: clamp(180px, 29svh, 230px) !important;
+  }
+  .page-hero-blog .page-hero-art > div:last-child { padding-block: 10px; }
+}
+@media (max-width: 767px) {
+  .page-hero { min-height: 0; height: auto; padding-block: 0; }
+  .page-hero .page-hero-inner { min-height: 0; padding-block: 28px; gap: 24px; }
+  .page-hero .page-hero-title {
+    font-size: clamp(2.05rem, 9vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+    overflow-wrap: anywhere;
+  }
+  .page-hero .page-hero-breadcrumb { margin-bottom: 18px; }
+  .page-hero .page-hero-lead { margin-top: 12px; font-size: .9375rem; line-height: 1.6; }
+  .page-hero .page-hero-actions { margin-top: 20px; }
+  .page-hero .page-hero-art { width: min(100%, 310px); margin-inline: auto; }
+  .page-hero-blog .page-hero-art .star-field { height: 210px !important; min-height: 0 !important; }
+  .page-hero-article .page-hero-article-art { margin-top: 20px; }
+  .page-hero-article .page-hero-article-art .star-field { height: 175px !important; min-height: 0 !important; }
+  .page-hero-legal .page-hero-policy-note { margin-top: 18px; }
+}
+@media (max-width: 479px) {
+  .page-hero .page-hero-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .page-hero .page-hero-actions > a { width: 100%; min-height: 48px; }
+}

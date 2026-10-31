@@ -26,9 +26,9 @@ export default function BlogPage() {
     <>
       {getSiteOrigin() && <JsonLd data={breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])}/>} 
       <section aria-labelledby="blog-title" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep py-12 sm:py-20">
-        <Container className="grid items-center gap-9 lg:grid-cols-[1fr_.95fr]">
+        <Container className="page-hero-inner grid items-center gap-7 lg:grid-cols-[1fr_.95fr]">
           <div>
-            <nav aria-label="Breadcrumb" className="mb-9">
+            <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9">
               <ol className="flex items-center gap-2 text-sm text-cream/75">
                 <li><Link href="/" className="hover:text-gold-light">Home</Link></li>
                 <li aria-hidden="true"><Icon name="chevron-right" size={16} className="text-gold"/></li>
@@ -36,10 +36,10 @@ export default function BlogPage() {
               </ol>
             </nav>
             <p className="eyebrow">Ideas, traditions and questions</p>
-            <h1 id="blog-title" className="mt-4 font-display text-[clamp(3.2rem,6vw,5.6rem)] leading-[1.06] text-cream">
+            <h1 id="blog-title" className="page-hero-title mt-4 font-display text-[clamp(3.2rem,6vw,5.6rem)] leading-[1.06] text-cream">
               Explore Astrology <span className="gold-gradient-text">Insights</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-8 text-cream/75">
+            <p className="page-hero-lead mt-6 max-w-xl text-base leading-8 text-cream/75">
               Learn the vocabulary and context of traditional astrology, one topic at a time.
               Our guides explain interpretive practices without promising particular results.
             </p>
@@ -47,7 +47,7 @@ export default function BlogPage() {
               Browse Articles <Icon name="arrow-right" size={17}/>
             </Link>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-gold/35 bg-navy-soft/90 shadow-[0_28px_60px_rgba(0,0,0,.2)]">
+          <div className="page-hero-art overflow-hidden rounded-2xl border border-gold/35 bg-navy-soft/90 shadow-[0_28px_60px_rgba(0,0,0,.2)]">
             <Link href={`/blog/${featured.slug}`} tabIndex={-1} aria-hidden="true"><BlogArtwork category={featured.category} featured/></Link>
             <div className="px-6 pb-7 pt-5 sm:px-8">
               <p className="text-xs font-semibold uppercase tracking-[.2em] text-gold-light">Featured guide · {featured.readingMinutes} min read</p>

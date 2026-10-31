@@ -49,8 +49,8 @@ export default async function ArticlePage({ params }: Props) {
     <>
       {getSiteOrigin() && <JsonLd data={[articleSchema(getSiteOrigin()!, post), breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: post.title, path: `/blog/${post.slug}` }]) ]}/>} 
       <section aria-labelledby="article-title" className="celestial-glow star-field border-b border-gold/25 bg-navy-deep pb-16 pt-10 sm:pb-20">
-        <Container>
-          <nav aria-label="Breadcrumb" className="mb-10">
+        <Container className="page-hero-inner page-hero-article-inner">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-10">
             <ol className="flex flex-wrap items-center gap-2 text-xs text-cream/75 sm:text-sm">
               <li><Link href="/" className="hover:text-gold-light">Home</Link></li>
               <li aria-hidden="true"><Icon name="chevron-right" size={16} className="text-gold"/></li>
@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: Props) {
           </nav>
           <div className="mx-auto max-w-4xl text-center">
             <p className="eyebrow">{categoryLabel} · Educational guide</p>
-            <h1 id="article-title" className="mt-5 font-display text-[clamp(2.7rem,5.4vw,5rem)] leading-[1.1] tracking-tight text-cream">{post.title}</h1>
+            <h1 id="article-title" className="page-hero-title mt-5 font-display text-[clamp(2.7rem,5.4vw,5rem)] leading-[1.1] tracking-tight text-cream">{post.title}</h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-cream/75">{post.excerpt}</p>
             <div className="mt-6 flex items-center justify-center gap-3 text-xs text-gold-light">
               <Icon name="star" size={16}/>
@@ -70,7 +70,7 @@ export default async function ArticlePage({ params }: Props) {
               <span>Tothepoint Astrology guide</span>
             </div>
           </div>
-          <div className="mx-auto mt-11 max-w-5xl overflow-hidden rounded-2xl border border-gold/35">
+          <div className="page-hero-article-art mx-auto mt-7 max-w-5xl overflow-hidden rounded-2xl border border-gold/35">
             <BlogArtwork category={post.category} featured/>
           </div>
         </Container>

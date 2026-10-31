@@ -34,3 +34,11 @@ Failures should be resolved before marking Part 13 complete. These tests deliber
 - Obtain genuine client photography, approved business copy and legal policies.
 - Confirm analytics/tracking consent requirements if integrating analytics.
 - Run actual-device and Lighthouse testing on the final public production URL.
+
+## Shared viewport-fit heroes
+
+All finished page introductions (About, Services, six service details, Blog listing, six blog articles, Testimonials, Contact, and three draft legal pages) now use a shared `page-hero` class with sizing based on `100svh - 74px`, the space available below the sticky desktop header.
+
+On desktop, typography and whitespace compact on short viewport heights rather than relying on hard-coded 490–620px hero minimums. Article and featured blog artworks adapt to the available height. On phone-sized viewports, hero heights remain content-driven and images move naturally with the page. The shared hero rules live in `src/app/globals.css`.
+
+Browser regression coverage checks every route at 1280×720, 1366×768 and 1440×900; mobile routes at 320, 390 and 430px. Tests assert title visibility, hero bottom <= viewport edge on desktop, no horizontal scroll, and minimum touch-target heights on phones.

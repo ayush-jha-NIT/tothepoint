@@ -8,15 +8,15 @@ export function LegalPage({ kind }: { kind: LegalKey }) {
   const page = legalDrafts[kind];
   return (
     <>
-      <section className="celestial-glow star-field border-b border-gold/25 bg-navy-deep py-14 sm:py-20">
-        <Container>
-          <nav aria-label="Breadcrumb" className="mb-9 flex items-center gap-2 text-sm text-cream/75">
+      <section className="page-hero page-hero-legal celestial-glow star-field border-b border-gold/25 bg-navy-deep py-14 sm:py-20">
+        <Container className="page-hero-inner">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9 flex items-center gap-2 text-sm text-cream/75">
             <Link href="/" className="hover:text-gold-light">Home</Link><Icon name="chevron-right" size={16}/><span aria-current="page" className="text-gold-light">{page.title}</span>
           </nav>
           <p className="eyebrow">Legal information · Pending client approval</p>
-          <h1 className="mt-4 font-display text-[clamp(3rem,6vw,5rem)] text-cream">{page.title}</h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-muted">{page.subtitle}</p>
-          <div role="note" className="mt-7 max-w-3xl rounded-xl border border-gold/40 bg-gold/10 p-5">
+          <h1 className="page-hero-title mt-4 font-display text-[clamp(3rem,6vw,5rem)] text-cream">{page.title}</h1>
+          <p className="page-hero-lead mt-5 max-w-3xl text-base leading-8 text-muted">{page.subtitle}</p>
+          <div role="note" className="page-hero-policy-note mt-7 max-w-3xl rounded-xl border border-gold/40 bg-gold/10 p-5">
             <h2 className="font-semibold text-gold-light">Draft policy – not yet approved</h2>
             <p className="mt-2 text-sm leading-7 text-cream/80">{page.warning}</p>
           </div>

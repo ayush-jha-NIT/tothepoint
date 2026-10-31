@@ -29,9 +29,9 @@ function Hero() {
   return (
     <section aria-labelledby="testimonials-title" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep">
       <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 size-[600px] rounded-full bg-[radial-gradient(circle,rgba(214,149,67,.17),transparent_65%)] blur-xl"/>
-      <Container className="relative grid items-center gap-8 pb-14 pt-12 lg:min-h-[520px] lg:grid-cols-[1.12fr_.88fr] lg:pb-16 lg:pt-14">
+      <Container className="page-hero-inner relative grid items-center gap-8 pb-14 pt-12 lg:min-h-[520px] lg:grid-cols-[1.12fr_.88fr] lg:pb-16 lg:pt-14">
         <div className="max-w-2xl">
-          <nav aria-label="Breadcrumb" className="mb-9">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9">
             <ol className="flex items-center gap-2 text-sm text-cream/75">
               <li><Link href="/" className="rounded hover:text-gold-light">Home</Link></li>
               <li aria-hidden="true"><Icon name="chevron-right" size={15} className="text-gold"/></li>
@@ -39,14 +39,14 @@ function Hero() {
             </ol>
           </nav>
           <p className="eyebrow">Client stories & feedback</p>
-          <h1 id="testimonials-title" className="mt-4 font-display text-[clamp(3.25rem,6vw,5.55rem)] leading-[1.06] tracking-tight text-cream">
+          <h1 id="testimonials-title" className="page-hero-title mt-4 font-display text-[clamp(3.25rem,6vw,5.55rem)] leading-[1.06] tracking-tight text-cream">
             Experiences That <span className="block gold-gradient-text">Deserve to Be Heard.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-8 text-cream/75">
+          <p className="page-hero-lead mt-6 max-w-xl text-base leading-8 text-cream/75">
             Every personal experience is different. This page is for authentic feedback from clients
             who choose to share their stories, with permission and review before publication.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="page-hero-actions mt-6 flex flex-wrap gap-3">
             <Link href="#share-feedback" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-gold px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-gold-light">
               Share Your Experience <Icon name="arrow-right" size={16}/>
             </Link>
@@ -54,7 +54,7 @@ function Hero() {
           </div>
           <p className="mt-5 text-xs leading-6 text-muted">No fabricated testimonials, ratings, client counts or endorsements.</p>
         </div>
-        <div className="relative mx-auto w-full max-w-[460px]" aria-hidden="true">
+        <div className="page-hero-art relative mx-auto w-full max-w-[460px]" aria-hidden="true">
           <CelestialArt className="opacity-85"/>
           <div className="absolute bottom-[6%] left-[5%] rounded-xl border border-gold/35 bg-navy-deep/85 px-5 py-4 shadow-xl backdrop-blur">
             <span className="font-display text-lg text-gold-light">Genuine feedback. Thoughtfully shared.</span>

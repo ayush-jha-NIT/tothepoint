@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 function ContactHero() {
   return (
     <section aria-labelledby="contact-heading" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep">
-      <Container className="grid items-center gap-7 pb-14 pt-10 lg:min-h-[490px] lg:grid-cols-[1.1fr_.9fr] lg:pb-16">
+      <Container className="page-hero-inner grid items-center gap-7 pb-14 pt-10 lg:min-h-[490px] lg:grid-cols-[1.1fr_.9fr] lg:pb-16">
         <div className="max-w-2xl">
-          <nav aria-label="Breadcrumb" className="mb-9">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9">
             <ol className="flex items-center gap-2 text-sm text-cream/75">
               <li><Link href="/" className="hover:text-gold-light">Home</Link></li>
               <li aria-hidden="true"><Icon name="chevron-right" size={16} className="text-gold"/></li>
@@ -29,19 +29,19 @@ function ContactHero() {
             </ol>
           </nav>
           <p className="eyebrow">We are here to listen</p>
-          <h1 id="contact-heading" className="mt-4 font-display text-[clamp(3.2rem,6vw,5.5rem)] leading-[1.07] text-cream">
+          <h1 id="contact-heading" className="page-hero-title mt-4 font-display text-[clamp(3.2rem,6vw,5.5rem)] leading-[1.07] text-cream">
             Get in <span className="gold-gradient-text">Touch</span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-8 text-cream/75">
+          <p className="page-hero-lead mt-6 max-w-xl text-base leading-8 text-cream/75">
             Have a question about an astrology consultation? Reach out to {siteConfig.astrologer} at Tothepoint Astrology.
             Confirm the service, session format, availability and pricing directly.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="page-hero-actions mt-6 flex flex-wrap gap-3">
             <WhatsAppBookingLink>Book Consultation</WhatsAppBookingLink>
             <a href="#contact-form" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-gold/60 px-6 py-3 text-sm font-semibold text-gold-light hover:bg-gold/10">Send a Message <Icon name="arrow-right" size={16}/></a>
           </div>
         </div>
-        <CelestialArt className="max-w-[410px] opacity-90"/>
+        <div className="page-hero-art mx-auto w-full max-w-[410px]"><CelestialArt className="opacity-90"/></div>
       </Container>
     </section>
   );

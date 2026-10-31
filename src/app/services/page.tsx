@@ -33,9 +33,9 @@ function ServicesHero() {
   return (
     <section aria-labelledby="services-hero-title" className="celestial-glow star-field relative isolate overflow-hidden border-b border-gold/20 bg-navy-deep">
       <div aria-hidden="true" className="pointer-events-none absolute -right-48 -top-32 size-[690px] rounded-full bg-[radial-gradient(circle,rgba(195,134,63,.17),transparent_63%)] blur-xl" />
-      <Container className="relative grid min-h-[560px] items-center gap-8 pb-12 pt-12 lg:grid-cols-[1.13fr_.87fr] lg:pb-16 lg:pt-16">
+      <Container className="page-hero-inner relative grid min-h-[560px] items-center gap-8 pb-12 pt-12 lg:grid-cols-[1.13fr_.87fr] lg:pb-16 lg:pt-16">
         <div className="relative z-10 max-w-[720px]">
-          <nav aria-label="Breadcrumb" className="mb-9">
+          <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9">
             <ol className="flex items-center gap-2 text-sm text-cream/75">
               <li><Link href="/" className="transition-colors hover:text-gold-light">Home</Link></li>
               <li aria-hidden="true"><Icon name="chevron-right" size={16} className="text-gold" /></li>
@@ -43,22 +43,22 @@ function ServicesHero() {
             </ol>
           </nav>
           <p className="eyebrow">Explore traditional astrology</p>
-          <h1 id="services-hero-title" className="mt-4 font-display text-[clamp(3.3rem,6vw,5.8rem)] leading-[1.05] tracking-[-.035em] text-cream">
+          <h1 id="services-hero-title" className="page-hero-title mt-4 font-display text-[clamp(3.3rem,6vw,5.8rem)] leading-[1.05] tracking-[-.035em] text-cream">
             Our Astrology <span className="block gold-gradient-text">Services</span>
           </h1>
           <h2 className="mt-5 font-display text-xl leading-snug text-cream/95 sm:text-2xl">
             Practical questions. Personal conversations. Traditional perspectives.
           </h2>
-          <p className="mt-5 max-w-xl text-[15px] leading-8 text-cream/75 sm:text-base">
+          <p className="page-hero-lead mt-5 max-w-xl text-[15px] leading-8 text-cream/75 sm:text-base">
             Explore six consultation topics, from birth charts and relationships to Vastu and Muhurat.
             Discuss your questions with Tothepoint Astrology and arrange the details directly.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="page-hero-actions mt-6 flex flex-wrap gap-3">
             <WhatsAppBookingLink icon="message">Book Consultation</WhatsAppBookingLink>
             <ActionLink href="#service-list" variant="outline" icon="arrow-right">Explore Services</ActionLink>
           </div>
         </div>
-        <div aria-hidden="true" className="relative mx-auto w-full max-w-[520px]">
+        <div aria-hidden="true" className="page-hero-art relative mx-auto w-full max-w-[520px]">
           <CelestialArt className="relative max-w-none drop-shadow-[0_0_48px_rgba(207,158,75,.19)]" />
           <div className="absolute bottom-[5%] right-0 rounded-lg border border-gold/35 bg-navy-deep/85 px-4 py-3 shadow-2xl backdrop-blur">
             <span className="font-display text-lg text-gold-light">Astrology &amp; Guidance</span>
