@@ -1,3 +1,5 @@
+import { canonicalPath, getSiteOrigin, breadcrumbSchema, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -26,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const profile = serviceProfiles[service.slug];
   const description = profile.introduction;
   return {
+    alternates: { canonical: canonicalPath(`/services/${service.slug}`) },
     title: `${service.title} Consultation`,
     description,
     openGraph: {
@@ -46,6 +49,7 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
+      {getSiteOrigin() && <JsonLd data={[serviceSchema(getSiteOrigin()!, service), breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Services", path: "/services" }, { name: service.title, path: `/services/${service.slug}` }]) ]}/>} 
       {/* Hero and breadcrumbs */}
       <section aria-labelledby="service-title" className="celestial-glow star-field relative isolate overflow-hidden border-b border-gold/25 bg-navy-deep">
         <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-44 size-[640px] rounded-full bg-[radial-gradient(circle,rgba(194,133,54,.15),transparent_64%)] blur-xl" />

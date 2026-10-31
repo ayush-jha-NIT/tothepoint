@@ -1,3 +1,5 @@
+import { canonicalPath, getSiteOrigin, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact/contact-form";
@@ -8,6 +10,7 @@ import { Icon } from "@/components/ui/icons";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalPath("/contact") },
   title: "Contact Us",
   description: "Contact Tothepoint Astrology and Hariom Shrivastava about Kundli, relationships, career, numerology, Vastu and Muhurat consultations. Email or WhatsApp enquiries.",
   openGraph: { title: "Contact Tothepoint Astrology", description: "Send an enquiry or connect through WhatsApp to discuss a consultation.", type: "website" },
@@ -70,6 +73,7 @@ function ContactDetails() {
 export default function ContactPage() {
   return (
     <>
+      {getSiteOrigin() && <JsonLd data={breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}/>} 
       <ContactHero/>
       <ContactDetails/>
       <section id="contact-form" aria-labelledby="form-title" className="scroll-mt-24 border-b border-gold/20 bg-navy-deep py-16 sm:py-24">

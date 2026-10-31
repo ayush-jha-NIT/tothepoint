@@ -1,3 +1,4 @@
+import { canonicalPath } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
@@ -12,6 +13,7 @@ const videos = getPublicVideoReviews(approvedVideoReviews);
 const hasPublicReviews = approvedReviews.some((review) => review.approved && review.consentToPublish) || videos.length > 0;
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalPath("/testimonials") },
   title: "Client Testimonials & Experiences",
   description:
     "Explore verified client experiences at Tothepoint Astrology. Share your feedback for manual review and arrange an astrology consultation on WhatsApp.",

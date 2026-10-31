@@ -9,6 +9,9 @@
 - [ ] Verify Resend sending domain, sender address and production API key.
 - [ ] Verify that contact form mail reaches tothepointastrology@gmail.com (Part 10 endpoint coded; provider credentials still needed).
 - [ ] Verify WhatsApp links from every future page, including service pages.
-- [ ] Replace Part 0 placeholder homepage with approved design in Part 2.
-- [ ] Test responsive behavior, accessibility, lint, typecheck, unit tests, build.
+- [x] Replace Part 0 placeholder homepage with designed Part 2 page.
+- [ ] Confirm Part 13 browser-based responsive, accessibility and performance smoke checks pass in CI; manual production checks remain for Part 14.
 - [ ] Connect custom domain to Vercel and run production smoke tests.
+
+- [ ] Configure verified canonical HTTPS domain and check sitemap.xml / robots.txt / canonical tags.
+- [ ] Run production Lighthouse, real-device and screen-reader checks before full launch.

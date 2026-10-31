@@ -1,3 +1,5 @@
+import { canonicalPath, getSiteOrigin, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BlogArtwork } from "@/components/blog/blog-artwork";
@@ -8,6 +10,7 @@ import { Icon } from "@/components/ui/icons";
 import { blogPosts, blogCategories } from "@/config/blog";
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalPath("/blog") },
   title: "Astrology Articles and Educational Guides",
   description: "Read clear, educational articles about Kundli, relationships, career, numerology, Vastu and Muhurat at Tothepoint Astrology.",
   openGraph: {
@@ -21,6 +24,7 @@ export default function BlogPage() {
   const featured = blogPosts[0];
   return (
     <>
+      {getSiteOrigin() && <JsonLd data={breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])}/>} 
       <section aria-labelledby="blog-title" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep py-12 sm:py-20">
         <Container className="grid items-center gap-9 lg:grid-cols-[1fr_.95fr]">
           <div>

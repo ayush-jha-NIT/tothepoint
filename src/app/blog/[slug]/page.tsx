@@ -1,3 +1,5 @@
+import { canonicalPath, getSiteOrigin, breadcrumbSchema, articleSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -21,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPost(slug);
   if (!post) return { title: "Article Not Found", robots: { index: false } };
   return {
+    alternates: { canonical: canonicalPath(`/blog/${post.slug}`) },
     title: post.title,
     description: post.excerpt,
     keywords: [...post.keywords],
@@ -44,6 +47,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
+      {getSiteOrigin() && <JsonLd data={[articleSchema(getSiteOrigin()!, post), breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: post.title, path: `/blog/${post.slug}` }]) ]}/>} 
       <section aria-labelledby="article-title" className="celestial-glow star-field border-b border-gold/25 bg-navy-deep pb-16 pt-10 sm:pb-20">
         <Container>
           <nav aria-label="Breadcrumb" className="mb-10">

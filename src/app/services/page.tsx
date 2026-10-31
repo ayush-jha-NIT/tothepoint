@@ -1,3 +1,5 @@
+import { canonicalPath, getSiteOrigin, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -15,6 +17,7 @@ import {
 } from "@/config/services-overview";
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalPath("/services") },
   title: "Astrology Consultation Services",
   description:
     "Explore Tothepoint Astrology services including Kundli Analysis, Marriage & Relationships, Career Guidance, Numerology, Vastu and Muhurat. Enquire directly on WhatsApp.",
@@ -272,6 +275,7 @@ function FinalCta() {
 export default function ServicesPage() {
   return (
     <>
+      {getSiteOrigin() && <JsonLd data={breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Services", path: "/services" }])}/>} 
       <ServicesHero />
       <BenefitStrip />
       <ServiceCards />

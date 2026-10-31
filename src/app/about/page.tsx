@@ -1,3 +1,5 @@
+import { canonicalPath, getSiteOrigin, breadcrumbSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,6 +12,7 @@ import { aboutReasons, aboutValues, areasOfInterest, consultationSteps } from "@
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalPath("/about") },
   title: "About Hariom Shrivastava",
   description:
     "Get to know Tothepoint Astrology and Hariom Shrivastava, explore our traditional astrology consultation approach and connect directly through WhatsApp.",
@@ -219,6 +222,7 @@ function Disciplines() {
 export default function AboutPage() {
   return (
     <>
+      {getSiteOrigin() && <JsonLd data={breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "About", path: "/about" }])}/>} 
       <AboutHero />
       <ValuesStrip />
       <OurStory />

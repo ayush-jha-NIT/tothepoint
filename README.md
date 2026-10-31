@@ -1,6 +1,6 @@
 # Tothepoint Astrology
 
-Website of Hariom Shrivastava, implemented in phased releases. Parts 0–11 cover the Next.js foundation, shared design system, homepage, About page, Services overview, six service detail pages, standardized WhatsApp booking, Testimonials, the blog listing and MDX article pages, the contact email endpoint and legal policy drafts.
+Website of Hariom Shrivastava, implemented in phased releases. Parts 0–13 cover the Next.js foundation, shared design system, homepage, About page, Services overview, six service detail pages, standardized WhatsApp booking, Testimonials, the blog listing and MDX article pages, the contact email endpoint, legal policy drafts, SEO and browser-based quality checks.
 
 ## Stack
 - Next.js 16 (App Router)
@@ -20,6 +20,8 @@ npm run lint
 npm run typecheck
 npm test
 npm run build
+npx playwright install chromium
+npm run test:e2e
 ```
 
 The GitHub Actions workflow uses `npm ci` when a lockfile is present, or `npm install` for the first online install. **Before publishing**, run `npm install` and commit the generated `package-lock.json` for reproducible builds. Builds and tests are verified through GitHub Actions after each development part.
@@ -30,6 +32,8 @@ The GitHub Actions workflow uses `npm ci` when a lockfile is present, or `npm in
 - Part 7 Testimonials: category-filtered reviews and video section, initially empty until authentic, consented content is verified. The feedback form prepares an email for the visitor to send manually. See `docs/testimonials.md`.
 - Parts 8–9 Blog: searchable category listing and six local educational guides rendered from MDX. Edit content in `src/content/blog/` and metadata in `src/config/blog.ts`. See `docs/blog.md`.
 - Part 11: Privacy, Terms and Refund pages contain clearly marked **drafts**, with `noindex` until client/legal approval. See `docs/legal-policies.md`.
+- Part 12: Canonical URL policy, sitemap/robots, OG image and structured data. `NEXT_PUBLIC_SITE_URL` must point to a verified public HTTPS domain before indexing. See `docs/seo.md`.
+- Part 13: Automated responsive, Chromium browser, axe accessibility and basic performance checks, in addition to CI lint/typecheck/unit/build. See `docs/quality.md`.
 - No payment gateway, booking database or automatic booking confirmation.
 
 ## Folder map
@@ -41,6 +45,7 @@ src/
   config/blog.ts   Blog metadata, search and related-post functions
   content/blog/    Trusted MDX article source files
   lib/whatsapp.ts  WhatsApp deep link builder
+  lib/seo.ts       Canonical domain, route index and JSON-LD builders
   types/           Shared type declarations
 tests/             Dependency-free unit tests
 docs/              Architecture and launch checklist

@@ -1,3 +1,4 @@
+import { canonicalPath } from "@/lib/seo";
 import { WhatsAppBookingLink } from "@/components/booking/whatsapp-booking-link";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -11,6 +12,7 @@ import { servicePreviews } from "@/config/home";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalPath("/") },
   title: "Personal Astrology Consultations | Tothepoint Astrology",
   description:
     "Discover Kundli, relationship, career, numerology, Vastu and Muhurat consultations with Hariom Shrivastava. Contact Tothepoint Astrology directly on WhatsApp.",
