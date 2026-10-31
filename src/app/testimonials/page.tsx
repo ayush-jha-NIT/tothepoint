@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 function Hero() {
   return (
-    <section aria-labelledby="testimonials-title" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep">
+    <section aria-labelledby="testimonials-title" className="page-hero page-hero-testimonials celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep">
       <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 size-[600px] rounded-full bg-[radial-gradient(circle,rgba(214,149,67,.17),transparent_65%)] blur-xl"/>
       <Container className="page-hero-inner relative grid items-center gap-8 pb-14 pt-12 lg:min-h-[520px] lg:grid-cols-[1.12fr_.88fr] lg:pb-16 lg:pt-14">
         <div className="max-w-2xl">

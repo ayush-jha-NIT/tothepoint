@@ -25,7 +25,7 @@ export default function BlogPage() {
   return (
     <>
       {getSiteOrigin() && <JsonLd data={breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])}/>} 
-      <section aria-labelledby="blog-title" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep py-12 sm:py-20">
+      <section aria-labelledby="blog-title" className="page-hero page-hero-blog celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep py-12 sm:py-20">
         <Container className="page-hero-inner grid items-center gap-7 lg:grid-cols-[1fr_.95fr]">
           <div>
             <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9">

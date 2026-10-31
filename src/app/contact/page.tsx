@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 function ContactHero() {
   return (
-    <section aria-labelledby="contact-heading" className="celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep">
+    <section aria-labelledby="contact-heading" className="page-hero page-hero-contact celestial-glow star-field relative overflow-hidden border-b border-gold/20 bg-navy-deep">
       <Container className="page-hero-inner grid items-center gap-7 pb-14 pt-10 lg:min-h-[490px] lg:grid-cols-[1.1fr_.9fr] lg:pb-16">
         <div className="max-w-2xl">
           <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-9">

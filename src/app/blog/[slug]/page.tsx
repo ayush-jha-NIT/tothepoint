@@ -48,7 +48,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       {getSiteOrigin() && <JsonLd data={[articleSchema(getSiteOrigin()!, post), breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }, { name: post.title, path: `/blog/${post.slug}` }]) ]}/>} 
-      <section aria-labelledby="article-title" className="celestial-glow star-field border-b border-gold/25 bg-navy-deep pb-16 pt-10 sm:pb-20">
+      <section aria-labelledby="article-title" className="page-hero page-hero-article celestial-glow star-field border-b border-gold/25 bg-navy-deep pb-16 pt-10 sm:pb-20">
         <Container className="page-hero-inner page-hero-article-inner">
           <nav aria-label="Breadcrumb" className="page-hero-breadcrumb mb-10">
             <ol className="flex flex-wrap items-center gap-2 text-xs text-cream/75 sm:text-sm">

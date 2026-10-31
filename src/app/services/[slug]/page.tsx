@@ -51,7 +51,7 @@ export default async function ServicePage({ params }: Props) {
     <>
       {getSiteOrigin() && <JsonLd data={[serviceSchema(getSiteOrigin()!, service), breadcrumbSchema(getSiteOrigin()!, [{ name: "Home", path: "/" }, { name: "Services", path: "/services" }, { name: service.title, path: `/services/${service.slug}` }]) ]}/>} 
       {/* Hero and breadcrumbs */}
-      <section aria-labelledby="service-title" className="celestial-glow star-field relative isolate overflow-hidden border-b border-gold/25 bg-navy-deep">
+      <section aria-labelledby="service-title" className="page-hero page-hero-service-detail celestial-glow star-field relative isolate overflow-hidden border-b border-gold/25 bg-navy-deep">
         <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-44 size-[640px] rounded-full bg-[radial-gradient(circle,rgba(194,133,54,.15),transparent_64%)] blur-xl" />
         <Container className="page-hero-inner relative grid items-center gap-10 pb-14 pt-10 lg:min-h-[570px] lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:pb-20 lg:pt-12">
           <div className="max-w-2xl">

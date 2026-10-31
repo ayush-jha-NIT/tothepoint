@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 function AboutHero() {
   return (
-    <section aria-labelledby="about-heading" className="celestial-glow star-field relative overflow-hidden border-b border-gold/25 bg-navy-deep">
+    <section aria-labelledby="about-heading" className="page-hero page-hero-about celestial-glow star-field relative overflow-hidden border-b border-gold/25 bg-navy-deep">
       <div aria-hidden="true" className="pointer-events-none absolute right-[-9%] top-[-25%] size-[620px] rounded-full bg-[radial-gradient(circle,rgba(209,147,68,.15),transparent_63%)] blur-xl" />
       <Container className="page-hero-inner relative grid min-h-[620px] items-center gap-10 pb-16 pt-12 lg:grid-cols-[1.06fr_.94fr] lg:gap-14 lg:pb-20 lg:pt-14">
         <div className="max-w-2xl">

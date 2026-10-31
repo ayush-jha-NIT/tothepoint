@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 function ServicesHero() {
   return (
-    <section aria-labelledby="services-hero-title" className="celestial-glow star-field relative isolate overflow-hidden border-b border-gold/20 bg-navy-deep">
+    <section aria-labelledby="services-hero-title" className="page-hero page-hero-services celestial-glow star-field relative isolate overflow-hidden border-b border-gold/20 bg-navy-deep">
       <div aria-hidden="true" className="pointer-events-none absolute -right-48 -top-32 size-[690px] rounded-full bg-[radial-gradient(circle,rgba(195,134,63,.17),transparent_63%)] blur-xl" />
       <Container className="page-hero-inner relative grid min-h-[560px] items-center gap-8 pb-12 pt-12 lg:grid-cols-[1.13fr_.87fr] lg:pb-16 lg:pt-16">
         <div className="relative z-10 max-w-[720px]">
