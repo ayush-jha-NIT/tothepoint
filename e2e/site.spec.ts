@@ -53,7 +53,7 @@ test("blog search and category filters update the displayed articles", async ({ 
 test("contact form reports validation errors without sending an unconfigured email", async ({ page }) => {
   await page.goto("/contact");
   await page.getByRole("button", { name: "Send Message" }).click();
-  await expect(page.getByRole("alert")).toBeVisible();
+  await expect(page.getByText("Check the highlighted fields.")).toBeVisible();
   await expect(page.getByText("Enter a valid email address.")).toBeVisible();
 });
 

@@ -146,7 +146,7 @@ function HowItWorks() {
     <section aria-labelledby="services-process-title" className="bg-cream py-16 text-navy sm:py-24">
       <Container>
         <div className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="eyebrow !text-[#99651f]">Our consultation process</p>
+          <p className="eyebrow !text-[#754715]">Our consultation process</p>
           <h2 id="services-process-title" className="mt-3 font-display text-4xl sm:text-5xl">How It Works</h2>
           <p className="mt-4 text-sm leading-7 text-[#49514d]">Four simple steps, with availability and fees agreed before any appointment is arranged.</p>
         </div>
@@ -156,11 +156,11 @@ function HowItWorks() {
               <div className="flex size-16 items-center justify-center rounded-full border border-[#c89b5e] bg-[#f7ead6] text-[#ad7227]">
                 <Icon name={step.icon} size={32} />
               </div>
-              <p className="mt-5 text-[11px] font-bold tracking-[.2em] text-[#a66c26]">STEP {step.id}</p>
+              <p className="mt-5 text-[11px] font-bold tracking-[.2em] text-[#754715]">STEP {step.id}</p>
               <h3 className="mt-2 font-display text-xl font-semibold">{step.title}</h3>
               <p className="mt-3 text-sm leading-6 text-[#4b514e]">{step.description}</p>
               {index < bookingSteps.length - 1 && (
-                <span aria-hidden="true" className="absolute -right-5 top-14 z-10 hidden rounded-full bg-cream p-1 text-[#a66c26] lg:block">
+                <span aria-hidden="true" className="absolute -right-5 top-14 z-10 hidden rounded-full bg-cream p-1 text-[#754715] lg:block">
                   <Icon name="arrow-right" size={19}/>
                 </span>
               )}
@@ -203,7 +203,7 @@ function ReviewSection() {
     <section aria-labelledby="services-reviews-title" className="border-b border-[#e6d7c0] bg-cream py-14 text-navy sm:py-20">
       <Container className="grid items-center gap-6 lg:grid-cols-[1.15fr_.85fr]">
         <div>
-          <p className="eyebrow !text-[#9c692c]">Client experiences</p>
+          <p className="eyebrow !text-[#754715]">Client experiences</p>
           <h2 id="services-reviews-title" className="mt-3 font-display text-4xl sm:text-5xl">What People Say</h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-[#4e514e]">
             We intend to share genuine experiences after client feedback has been verified and approved.
@@ -228,7 +228,7 @@ function ServicesFaq() {
     <section aria-labelledby="services-faq-title" className="bg-cream py-16 text-navy sm:py-24">
       <Container>
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="eyebrow !text-[#9c692c]">Helpful information</p>
+          <p className="eyebrow !text-[#754715]">Helpful information</p>
           <h2 id="services-faq-title" className="mt-3 font-display text-4xl sm:text-5xl">Frequently Asked Questions</h2>
           <p className="mt-4 text-sm leading-7 text-[#4e514e]">Answers about services, consultation arrangements and what to expect.</p>
         </div>
